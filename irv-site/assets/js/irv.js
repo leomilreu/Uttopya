@@ -1,4 +1,14 @@
 (function () {
+  // Quebras de linha (<br>) são ocultadas no celular por algumas regras de CSS.
+  // Garante um espaço antes de cada uma para as palavras não ficarem coladas.
+  document.querySelectorAll('main br').forEach(function (br) {
+    const prev = br.previousSibling;
+    if (prev && prev.nodeType === 3 && !/\s$/.test(prev.textContent)) {
+      prev.textContent += ' ';
+    }
+  });
+})();
+(function () {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('#menu-irv');
   if (!toggle || !nav) return;

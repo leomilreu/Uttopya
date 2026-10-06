@@ -2,7 +2,7 @@
 /**
  * Plugin Name: IRV — Site Institucional
  * Description: Reconstrução independente do site do Instituto Raphael Veiga em /irv.
- * Version: 0.11.0
+ * Version: 0.12.0
  * Author: Uttopya
  */
 
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'IRV_SITE_VERSION', '0.11.0' );
+define( 'IRV_SITE_VERSION', '0.12.0' );
 define( 'IRV_SITE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'IRV_SITE_URL', plugin_dir_url( __FILE__ ) );
 require_once IRV_SITE_DIR . 'includes/blog-data.php';
@@ -73,6 +73,8 @@ function irv_site_render() {
 		require IRV_SITE_DIR . 'templates/home.php';
 	} elseif ( 'post' === $page ) {
 		require IRV_SITE_DIR . 'templates/post.php';
+	} elseif ( 'about' === $page ) {
+		require IRV_SITE_DIR . 'templates/about.php';
 	} else {
 		require IRV_SITE_DIR . 'templates/page.php';
 	}
@@ -80,8 +82,9 @@ function irv_site_render() {
 }
 add_action( 'template_redirect', 'irv_site_render', 0 );
 
-function irv_site_redirect_with_status( $anchor, $status ) {
-	wp_safe_redirect( add_query_arg( 'form_status', $status, home_url( '/' ) ) . $anchor );
+function irv_site_redirect_with_status( $anchor, $status, $base = '' ) {
+	$base = $base ? wp_validate_redirect( $base, home_url( '/' ) ) : home_url( '/' );
+	wp_safe_redirect( add_query_arg( 'form_status', $status, remove_query_arg( 'form_status', $base ) ) . $anchor );
 	exit;
 }
 
@@ -106,19 +109,22 @@ add_action( 'admin_post_nopriv_irv_contact', 'irv_site_contact_submit' );
 add_action( 'admin_post_irv_contact', 'irv_site_contact_submit' );
 
 function irv_site_newsletter_submit() {
+	// Volta para a página onde o formulário foi enviado (home ou páginas internas).
+	$back = wp_get_referer();
+	$back = $back ? $back : '';
 	if ( ! isset( $_POST['irv_newsletter_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['irv_newsletter_nonce'] ) ), 'irv_newsletter' ) ) {
-		irv_site_redirect_with_status( '#newsletter', 'invalid' );
+		irv_site_redirect_with_status( '#newsletter', 'invalid', $back );
 	}
 	$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
 	if ( ! is_email( $email ) ) {
-		irv_site_redirect_with_status( '#newsletter', 'invalid' );
+		irv_site_redirect_with_status( '#newsletter', 'invalid', $back );
 	}
 	$subscribers = get_option( 'irv_newsletter_subscribers', array() );
 	$subscribers = is_array( $subscribers ) ? $subscribers : array();
 	$subscribers[ strtolower( $email ) ] = current_time( 'mysql' );
 	update_option( 'irv_newsletter_subscribers', $subscribers, false );
 	wp_mail( 'atendimento@institutoraphaelveiga.org.br', 'Nova inscrição na newsletter do IRV', "E-mail: {$email}" );
-	irv_site_redirect_with_status( '#newsletter', 'subscribed' );
+	irv_site_redirect_with_status( '#newsletter', 'subscribed', $back );
 }
 add_action( 'admin_post_nopriv_irv_newsletter', 'irv_site_newsletter_submit' );
 add_action( 'admin_post_irv_newsletter', 'irv_site_newsletter_submit' );
