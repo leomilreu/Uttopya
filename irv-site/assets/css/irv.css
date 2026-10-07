@@ -1579,7 +1579,6 @@ body.irv-site .jn-hero>img{object-position:70% 16%}
 /* v0.31 Início: colunas do "Quem somos" somavam 104% e vazavam ~15px em 1000–1100 px */
 @media(min-width:901px){body.irv-home .about{grid-template-columns:48% 40%;gap:12%}}
 
-/* v0.32 O que fazemos: cards dos pilares com fundo azul-claro próprio, para se diferenciar dos demais */
-body.page-work .pillars .pillar-grid .pillar{background:linear-gradient(180deg,#d9e6ff 0%,#eaf1ff 100%);border:1px solid #bdd0f5;box-shadow:0 14px 34px #2868d21f}
-body.page-work .pillars .pillar-body{background:transparent}
-body.page-work .pillars .pillar-extra p{color:#2c3547}
+/* v0.32 O que fazemos: seção "Nossos pilares" com fundo próprio (cards voltam a ser brancos) */
+body.page-work .pillars{position:relative;background:#e4edff;box-shadow:0 0 0 100vmax #e4edff;clip-path:inset(0 -100vmax);padding-top:56px;padding-bottom:56px;margin-bottom:0}
+@media(max-width:900px){body.page-work .pillars{padding-top:40px;padding-bottom:40px}}
