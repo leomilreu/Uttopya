@@ -139,3 +139,6 @@ Quem somos: rótulo "História" passa para cima do título "Quem é Raphael Veig
 
 ## 0.29.0
 Botões de fundo transparente (ex.: "Apoie o IRV") ficam rosa ao passar o mouse.
+
+## 0.30.0
+Botões de doação (cabeçalho, "Doe agora", "Quero doar", "Doar R$ X") com pulso suave e brilho; setas dos links respiram. Respeita prefers-reduced-motion.

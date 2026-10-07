@@ -273,3 +273,11 @@
     if (!open) box.scrollIntoView({ block: 'start' });
   });
 })();
+
+/* Botões que convidam a doar recebem uma animação discreta (.is-donate). */
+(function () {
+  const re = /\b(doe|doar|doa[çc][ãa]o)\b/i;
+  document.querySelectorAll('main .button, .header-cta, .jn-way__link, .believe .button').forEach(function (el) {
+    if (re.test(el.textContent)) el.classList.add('is-donate');
+  });
+})();

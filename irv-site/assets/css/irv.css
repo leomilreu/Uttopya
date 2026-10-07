@@ -1558,3 +1558,14 @@ body.page-about .raphael-copy>p:last-child{grid-column:2;grid-row:1/3;margin:30p
 /* v0.29 botões de fundo transparente ficam rosa ao passar o mouse */
 body.irv-site .button--outline{transition:background-color .2s ease,border-color .2s ease,color .2s ease}
 body.irv-site .button--outline:hover,body.irv-site .button--outline:focus-visible{background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* v0.30 botões de doação: pulso suave + brilho; seta dos links respira */
+@keyframes irv-donate-pulse{0%{box-shadow:0 0 0 0 #dc2e5f66}70%,100%{box-shadow:0 0 0 14px #dc2e5f00}}
+@keyframes irv-donate-sheen{0%{transform:translateX(-140%) skewX(-20deg)}45%,100%{transform:translateX(260%) skewX(-20deg)}}
+@keyframes irv-donate-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+body.irv-site .is-donate.button,body.irv-site .is-donate.header-cta{position:relative;overflow:hidden;animation:irv-donate-pulse 2.8s ease-out 1.2s infinite}
+body.irv-site .is-donate.button::after,body.irv-site .is-donate.header-cta::after{content:'';position:absolute;top:0;bottom:0;left:0;width:38%;background:linear-gradient(100deg,#fff0,#ffffff59,#fff0);transform:translateX(-140%) skewX(-20deg);animation:irv-donate-sheen 4.6s ease-in-out 1.8s infinite;pointer-events:none}
+body.irv-site .is-donate.button--light,body.irv-site .join-card--pink .is-donate.button{animation-name:irv-btn-pulse}
+body.irv-site .is-donate.button:hover,body.irv-site .is-donate.header-cta:hover{animation-play-state:paused;transform:translateY(-2px)}
+body.irv-site .is-donate.jn-way__link i{animation:irv-donate-nudge 1.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){body.irv-site .is-donate,body.irv-site .is-donate::after,body.irv-site .is-donate i{animation:none!important}}
