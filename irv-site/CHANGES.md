@@ -57,3 +57,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 - Página Notícias: cabeçalho centralizado ("Histórias em movimento"), filtros de categoria em pílulas centralizadas, a notícia mais recente em destaque (foto grande + resumo + botão) e os demais em cards com a foto ao fundo, etiquetas de categoria, data e "Ler matéria".
 - Página de notícia: "Leia também" usa os mesmos cards.
 - Fotos das notícias em WebP leve (`assets/news/`, 23–176 KB, antes até 7 MB). Funções de apoio em `templates/partials/news-helpers.php` (se a foto leve não existir, usa o original).
+
+## 0.15.1
+- Removido o "1 min de leitura" de todas as páginas (home, lista de notícias, destaque, cards, "Leia também" e página da notícia). `templates/home.php` agora também está no repositório.
