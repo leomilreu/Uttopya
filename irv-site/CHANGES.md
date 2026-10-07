@@ -147,3 +147,6 @@ Botões de doação (cabeçalho, "Doe agora", "Quero doar", "Doar R$ X") com pul
 Removidos os elementos pincelados: seta da metodologia (O que fazemos), círculo/pincelada da faixa "IRV é mais que movimento" (Início, agora rosa liso), borda rasgada e círculo rosa do herói da Faça parte (nova foto, sem círculo).
 
 Obs. 0.31.0: ícone do pilar Esportes com fundo branco (arquivo assets/wix/e09d66_5de483...png, só no servidor); colunas da seção "Quem somos" da Início ajustadas (sem vazamento em 1000–1100 px); hero da Faça parte sem círculo/borda rasgada.
+
+## 0.32.0
+O que fazemos: cards dos pilares com fundo azul-claro próprio.
