@@ -136,3 +136,6 @@ Quem somos: placa azul atrás da foto da Márcia agora cobre só a imagem; legen
 
 ## 0.28.0
 Quem somos: rótulo "História" passa para cima do título "Quem é Raphael Veiga" (desktop).
+
+## 0.29.0
+Botões de fundo transparente (ex.: "Apoie o IRV") ficam rosa ao passar o mouse.
