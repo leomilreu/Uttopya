@@ -153,3 +153,6 @@ O que fazemos: seção "Nossos pilares" com fundo azul-claro próprio (faixa int
 
 ## 0.33.0
 Início (desktop): banner com altura da tela (menos cabeçalho), sem faixa sobrando; números visíveis ao abrir.
+
+## 0.34.0
+Início: faixa "IRV é mais que movimento" volta a usar a arte original do Wix (assets/images/movement-strip*.webp).

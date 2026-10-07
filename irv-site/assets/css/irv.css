@@ -1572,7 +1572,6 @@ body.irv-site .is-donate.jn-way__link i{animation:irv-donate-nudge 1.8s ease-in-
 
 /* v0.31 sem elementos pincelados: seta, círculo da faixa da Início e borda rasgada do herói */
 body.irv-site .deco,body.irv-site .deco--arrow,body.irv-site .deco--brush{display:none!important}
-body.irv-site .movement{background-image:none!important;background-color:var(--pink)}
 body.irv-site .jn-hero::after{display:none}
 body.irv-site .jn-hero>img{object-position:70% 16%}
 
@@ -1588,3 +1587,10 @@ body.page-work .pillars{position:relative;background:#e4edff;box-shadow:0 0 0 10
 body.irv-home .hero{height:clamp(540px,calc(100svh - 95px - 76px),860px)}
 body.irv-home .hero-inner{height:100%;align-items:center;padding-top:0;padding-bottom:30px}
 }
+
+/* v0.34 faixa "IRV é mais que movimento" da Início: arte original do Wix de volta */
+body.irv-site .movement{background-color:var(--pink);background-image:image-set(url('../images/movement-strip-1100.webp') 1x,url('../images/movement-strip.webp') 2x)!important;background-image:url('../images/movement-strip.webp')!important;background-size:cover;background-position:right center;background-repeat:no-repeat}
+@media(max-width:560px){body.irv-site .movement{background-image:url('../images/movement-strip-1100.webp')!important}}
+@media(max-width:900px){body.irv-site .movement{background-size:auto 100%}}
+@media(max-width:560px){body.irv-site .movement{min-height:0;padding:34px 0 128px;background-size:auto 124px;background-position:right bottom}body.irv-site .movement .shell{min-height:0;align-items:flex-start}body.irv-site .movement .shell>div{max-width:100%}}
+body.irv-site .movement{background-color:#ff206e}
