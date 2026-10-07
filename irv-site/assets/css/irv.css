@@ -1529,3 +1529,8 @@ body.irv-post .pt-head h1{max-width:none;text-wrap:pretty}
 body.irv-post .pt-meta{margin-top:20px}
 body.irv-post .pt-back{display:inline-flex;align-items:center;gap:8px;padding:6px 0;font-size:14px;font-weight:800;transition:gap .2s}
 body.irv-post .pt-back:hover{gap:12px;text-decoration:none}
+
+/* v0.24 créditos do rodapé: Tomato + Uttopya com links individuais */
+body.irv-site .footer-credit a{color:inherit;text-decoration:none;font-weight:700}
+body.irv-site .footer-credit a:hover,body.irv-site .footer-credit a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:560px){body.irv-site .footer-signature{display:flex;flex-direction:column;align-items:center;gap:4px}body.irv-site .footer-dot{display:none}}

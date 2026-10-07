@@ -117,3 +117,6 @@ Post: título ocupa toda a largura do conteúdo; autor removido (fica só a data
 
 ## 0.23.0
 Post: topo com link "Voltar às notícias" e seta à esquerda no lugar do caminho Notícias/Categoria.
+
+## 0.24.0
+Rodapé: "UM PROJETO TOMATO + UTTOPYA" com link individual em cada nome; no celular os créditos ficam em duas linhas.
