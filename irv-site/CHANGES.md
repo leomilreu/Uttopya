@@ -102,3 +102,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 - Imagens: versões menores em AVIF (`hero-1280/800`, `about-480`, `news-N-480`) com `srcset`/`sizes`, imagem principal menor em telas menores (CSS) e `width`/`height` nas imagens (sem saltos de layout). `news-3.avif` reduzida de 170 KB para 41 KB (a original ficou no servidor como `news-3.avif.bak-0.17`).
 - Espaço entre seções padronizado (56 px desktop, 44 tablet, 36 celular), como nas outras páginas (`--sy`).
 - Botões "Conheça o instituto" e "Apoie o IRV" levam às páginas Quem somos e Faça parte; o menu do rodapé da home também leva às páginas.
+
+## 0.19.0
+WhatsApp flutuante no mobile: ao rolar até o rodapé, para acima da linha dos créditos (JS `--wa-lift` + CSS).

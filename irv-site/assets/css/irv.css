@@ -1492,3 +1492,6 @@ body.irv-home{--sy:56px}
 body.irv-home .about{padding-bottom:var(--sy)}
 body.irv-home .fronts,body.irv-home .voices,body.irv-home .join,body.irv-home .news{height:auto;padding-top:var(--sy);padding-bottom:var(--sy)}
 body.irv-home .newsletter{margin-top:0}
+
+/* v0.19 WhatsApp acima da linha dos créditos (mobile) */
+@media(max-width:900px){body.irv-site .whatsapp-float{bottom:calc(16px + var(--wa-lift,0px) + env(safe-area-inset-bottom));margin-bottom:12px}}

@@ -241,3 +241,22 @@
     });
   }
 })();
+
+/* Botão do WhatsApp: no celular, para de descer ao chegar na linha acima dos créditos. */
+(function () {
+  const wa = document.querySelector('.whatsapp-float');
+  const line = document.querySelector('.footer-bottom');
+  if (!wa || !line) return;
+  const mq = window.matchMedia('(max-width: 900px)');
+  let tick = false;
+  const update = function () {
+    tick = false;
+    if (!mq.matches) { wa.style.removeProperty('--wa-lift'); return; }
+    const over = window.innerHeight - line.getBoundingClientRect().top;
+    wa.style.setProperty('--wa-lift', Math.max(0, over) + 'px');
+  };
+  const queue = function () { if (!tick) { tick = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', queue, { passive: true });
+  window.addEventListener('resize', queue);
+  update();
+})();
