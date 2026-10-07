@@ -130,3 +130,6 @@ Rodapé: créditos com mais peso de fonte (600; nomes em 800).
 - Posts: vídeos hospedados em assets/videos.
 - Quem somos (celular): botões do topo em largura total.
 Obs.: os MP4 ficam apenas no servidor (não versionados).
+
+## 0.27.0
+Quem somos: placa azul atrás da foto da Márcia agora cobre só a imagem; legenda fora, sobre fundo branco.

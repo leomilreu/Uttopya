@@ -1541,3 +1541,8 @@ body.irv-site .footer-credit a{font-weight:800}
 .jn-gallery:not(.is-open) .jn-tile--extra{display:none}
 .jn-gallery__more{margin:28px 0 0;text-align:center}
 @media(max-width:560px){body.page-about .wix-about-hero .hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:14px;width:100%}body.page-about .wix-about-hero .hero-actions .button{width:100%}}
+
+/* v0.27 Quem somos: placa azul só atrás da foto; legenda fica fora, sobre fundo branco */
+.page-about .wix-about-intro figure::before{inset:22px -22px auto 22px;height:390px}
+.page-about .wix-about-intro figcaption{margin:38px 0 0 4px;font-weight:700;font-size:14px}
+@media(max-width:900px){.page-about .wix-about-intro figure::before{inset:12px -10px auto 10px;height:300px}.page-about .wix-about-intro figcaption{margin:26px 0 0 2px}}
