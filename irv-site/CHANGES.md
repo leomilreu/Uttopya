@@ -21,3 +21,10 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 - Seção "13 títulos": faixa clara e compacta (antes era um bloco azul grande).
 - Parceiros: logos em largura total (4 por linha), maiores e sem esmaecer; logos recortados com fundo limpo.
 - Documentos: cards pequenos em linha (ícone, nome, ano e "Baixar").
+
+## 0.13.0 — demais páginas internas
+- Novos templates: `work.php` (O que fazemos), `join.php` (Faça parte), `news.php` (Notícias), `post.php` (notícia, agora com "Leia também") e `privacy.php`.
+- `templates/partials/` (head, header, footer, newsletter): cabeçalho, rodapé e newsletter iguais aos da home, compartilhados por todas as páginas internas, com o item do menu da página atual destacado.
+- `irv-site.php`: cada rota carrega o seu template; `page.php` deixou de ser usado (fica no plugin como reserva).
+- CSS (bloco v0.13): números de impacto sem sobreposição, hero de O que fazemos com a arte pronta, fotos das notícias sem esticar, formulário de doação sem linha cortando os títulos, textos de notícia e privacidade alinhados à esquerda.
+- O `post.php` antigo foi substituído; o `page.php` antigo continua no servidor.

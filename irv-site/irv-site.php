@@ -2,7 +2,7 @@
 /**
  * Plugin Name: IRV — Site Institucional
  * Description: Reconstrução independente do site do Instituto Raphael Veiga em /irv.
- * Version: 0.12.1
+ * Version: 0.13.0
  * Author: Uttopya
  */
 
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'IRV_SITE_VERSION', '0.12.1' );
+define( 'IRV_SITE_VERSION', '0.13.0' );
 define( 'IRV_SITE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'IRV_SITE_URL', plugin_dir_url( __FILE__ ) );
 require_once IRV_SITE_DIR . 'includes/blog-data.php';
@@ -69,15 +69,16 @@ function irv_site_render() {
 
 	status_header( 200 );
 	nocache_headers();
-	if ( 'home' === $page ) {
-		require IRV_SITE_DIR . 'templates/home.php';
-	} elseif ( 'post' === $page ) {
-		require IRV_SITE_DIR . 'templates/post.php';
-	} elseif ( 'about' === $page ) {
-		require IRV_SITE_DIR . 'templates/about.php';
-	} else {
-		require IRV_SITE_DIR . 'templates/page.php';
-	}
+	$templates = array(
+		'home'    => 'home.php',
+		'about'   => 'about.php',
+		'work'    => 'work.php',
+		'join'    => 'join.php',
+		'news'    => 'news.php',
+		'post'    => 'post.php',
+		'privacy' => 'privacy.php',
+	);
+	require IRV_SITE_DIR . 'templates/' . $templates[ $page ];
 	exit;
 }
 add_action( 'template_redirect', 'irv_site_render', 0 );
