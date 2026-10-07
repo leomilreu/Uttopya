@@ -23,16 +23,16 @@ $pillars = array(
 /* Impacto: número, título, texto, foto, foco da foto, texto alternativo. */
 $impact = array(
 	array( '01', 'Direitos', 'Garantimos o acesso ao esporte, à arte e à cultura, por meio de atividades gratuitas para crianças e adolescentes de 6 a 14 anos.', 'e09d66_d0797cc41df147969ddb3e8f7619a0d6~mv2.jpg', '51% 68%', 'Menina sendo examinada por médica' ),
-	array( '02', 'Território', 'Impactamos positivamente a região de São Mateus, valorizando os saberes locais e ampliando as perspectivas de futuro na comunidade.', 'e09d66_a94d98a7e35e46eb9369f47e282aaefc~mv2.jpg', '72% 88%', 'Crianças dançando' ),
+	array( '02', 'Território', 'Impactamos positivamente a região de São Mateus, valorizando os saberes locais e ampliando as perspectivas de futuro na comunidade.', 'e09d66_a94d98a7e35e46eb9369f47e282aaefc~mv2.jpg', '68% 62%', 'Crianças dançando' ),
 	array( '03', 'Transformação', 'Estimulamos o desenvolvimento de competências socioemocionais, como autoconhecimento, respeito, trabalho em equipe e responsabilidade.', 'e09d66_05787aec5eca40299c0619cd0bb77b4b~mv2.jpg', '50% 45%', 'Dois meninos abraçados' ),
 	array( '04', 'Vínculos', 'Fortalecemos os vínculos das crianças e dos adolescentes com suas famílias.', 'e09d66_3817eaa76a184bfcb6d8025ecf7f3238~mv2.jpg', '50% 50%', 'Duas mãos dadas' ),
 );
 
 $voices = array(
-	array( 'e09d66_0d9ab8587ca3487985d9200c388c06ad~mv2.jpg', 'gosto de ouvir músicas', 'Ana Julia, 9 anos' ),
-	array( 'e09d66_4c21821cbb4e426dbcd355eaf5432e7d~mv2.jpg', 'gosto de k-pop e de assistir filmes', 'Ana Luzia, 11 anos' ),
-	array( 'e09d66_5930376747d3437b982cc5caaef2b3c7~mv2.jpg', 'gosto de empinar pipas', 'Arthur, 11 anos' ),
-	array( 'e09d66_0b79bd1c3993415498228f0d273dd083~mv2.jpg', 'gosto de vôlei', 'Isabel, 9 anos' ),
+	array( 'ana-julia.webp', 'gosto de ouvir músicas', 'Ana Julia', '9 anos', '50% 22%' ),
+	array( 'ana-luzia.webp', 'gosto de k-pop e de assistir filmes', 'Ana Luzia', '11 anos', '50% 24%' ),
+	array( 'arthur.webp', 'gosto de empinar pipas', 'Arthur', '11 anos', '50% 20%' ),
+	array( 'isabel.webp', 'gosto de vôlei', 'Isabel', '9 anos', '55% 22%' ),
 );
 $marquee = array( 'Futebol', 'Handebol', 'Vôlei', 'Basquete', 'Ballet', 'Festivais' );
 
@@ -61,9 +61,9 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 
 </div>
 
-<section class="work-impact shell"><header class="work-impact__head"><p class="eyebrow">Nosso impacto</p><h2>O que construímos juntos</h2></header><div class="impact-grid"><?php foreach ( $impact as $item ) : ?><article class="impact-card"><div class="impact-card__text"><b><?php echo esc_html( $item[0] ); ?></b><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></div><div class="impact-card__media"><img src="<?php echo $wix( $item[3] ); ?>" style="object-position:<?php echo esc_attr( $item[4] ); ?>" loading="lazy" decoding="async" alt="<?php echo esc_attr( $item[5] ); ?>"></div></article><?php endforeach; ?></div></section>
+<section class="impact-band"><div class="shell"><h2 class="impact-eyebrow">Nosso impacto</h2><ol class="impact-list"><?php foreach ( $impact as $item ) : ?><li class="impact-row"><b class="impact-num" aria-hidden="true"><?php echo esc_html( $item[0] ); ?></b><span class="impact-dot" aria-hidden="true"></span><div class="impact-text"><h3><span class="sr-only"><?php echo esc_html( $item[0] ); ?> — </span><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></div><div class="impact-photo"><img src="<?php echo $wix( $item[3] ); ?>" style="object-position:<?php echo esc_attr( $item[4] ); ?>" loading="lazy" decoding="async" alt="<?php echo esc_attr( $item[5] ); ?>"></div></li><?php endforeach; ?></ol></div></section>
 
-<section class="participant-voices"><div class="shell"><p class="eyebrow">Vozes que inspiram</p><h2>Nossos participantes</h2><div><?php foreach ( $voices as $voice ) : ?><article><img src="<?php echo $wix( $voice[0] ); ?>" width="180" height="180" loading="lazy" decoding="async" alt="<?php echo esc_attr( $voice[2] ); ?>"><blockquote><?php echo esc_html( $voice[1] ); ?></blockquote><p><?php echo esc_html( $voice[2] ); ?></p></article><?php endforeach; ?></div></div></section>
+<section class="participant-voices"><div class="shell"><header class="voices-head"><p class="eyebrow">Vozes que inspiram</p><h2>Nossos participantes</h2></header><div class="voices-grid"><?php foreach ( $voices as $voice ) : ?><figure class="voice-card"><img src="<?php echo $asset( 'assets/voices/' . $voice[0] ); ?>" style="object-position:<?php echo esc_attr( $voice[4] ); ?>" width="800" height="800" loading="lazy" decoding="async" alt="<?php echo esc_attr( $voice[2] . ', ' . $voice[3] ); ?>"><figcaption><blockquote><?php echo esc_html( $voice[1] ); ?></blockquote><p class="voice-who"><strong><?php echo esc_html( $voice[2] ); ?></strong><span><?php echo esc_html( $voice[3] ); ?></span></p></figcaption></figure><?php endforeach; ?></div></div></section>
 
 <section class="believe"><div class="shell"><h2>Acredite no potencial. <br>Transforme o presente. <br>Construa futuros.</h2><p>Com a sua doação, mais crianças e jovens têm acesso à educação, ao esporte, à cultura e a um futuro com mais oportunidades.</p><a class="button button--pink" href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Doe agora</a></div></section>
 
