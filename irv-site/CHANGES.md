@@ -70,3 +70,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 - Depoimentos: cards com pôster; tocam vídeo ao clicar quando o arquivo MP4 existir em `assets/videos/` (`depoimento-paulo.mp4`, `depoimento-ludmila.mp4`, `depoimento-clarissa.mp4`).
 - Galeria em mosaico com visualizador de foto e vídeo (`assets/gallery/`, itens listados em `templates/join.php`).
 - Entrada ao rolar, valores contando e hover nos cards.
+
+## 0.16.1
+- Faça parte: valores de doação em cards com o que cada um representa (R$ 30 sapatilha, R$ 50 luvas, R$ 70 uniforme, R$ 100 joelheiras, R$ 200 kit) e a opção "Gostaria de adicionar R$ … para cobrir taxas de transação" (marcada por padrão; 2,9% do valor, como no Wix). O botão mostra o total, ex.: "Doar R$ 51,45".

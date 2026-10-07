@@ -17,6 +17,15 @@ $ways = array(
 	array( 'Doação de materiais', 'Doe produtos e serviços que apoiam os nossos projetos.', 'Quero doar', 'mailto:iara.daher@institutoraphaelveiga.org.br?subject=Quero%20doar%20produtos%20ou%20servi%C3%A7os', 'e09d66_74b38901c63547cd8878ece07c3d50bb~mv2.png', false ),
 );
 
+/* Valores de doação e o que cada um representa. */
+$amounts = array(
+	array( 30, 'Você garante a compra de uma sapatilha para as aulas de ballet' ),
+	array( 50, 'Você doa um par de luvas para os goleiros' ),
+	array( 70, 'Você doa um uniforme completo para as aulas de dança' ),
+	array( 100, 'Você doa um par de joelheiras' ),
+	array( 200, 'Você doa um kit de material esportivo para treino' ),
+);
+
 /*
  * Depoimentos: título, texto, pôster e vídeo (opcional). Para tocar um vídeo, envie o
  * arquivo MP4 para assets/videos/ com o nome indicado; sem o arquivo, o card fica só com a foto.
@@ -55,8 +64,9 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 
 <section id="doacao" class="jn-donate"><div class="shell jn-donate__grid"><div class="jn-donate__photo"><img src="<?php echo $asset( 'assets/join/donate.webp' ); ?>" width="1100" height="1467" loading="lazy" decoding="async" alt="Participantes do Instituto se abraçando"></div><form class="jn-form" data-donate action="#" method="get"><h2>Faça a diferença!</h2><p class="jn-lead">Doações recorrentes fortalecem o nosso trabalho, garantindo a continuidade das nossas ações. Contribua agora e construa um Brasil com oportunidades de desenvolvimento para todas as crianças e adolescentes.</p>
 <fieldset class="jn-seg"><legend>Com que frequência você quer doar?</legend><label><input type="radio" name="frequency" value="1 vez" checked><span>1 vez</span></label><label><input type="radio" name="frequency" value="mensal"><span>Mensal</span></label></fieldset>
-<fieldset class="jn-amounts"><legend>Qual valor?</legend><?php foreach ( array( 30, 50, 70, 100, 200 ) as $irv_value ) : ?><label><input type="radio" name="amount" value="<?php echo (int) $irv_value; ?>"<?php echo 50 === $irv_value ? ' checked' : ''; ?>><span>R$ <?php echo (int) $irv_value; ?></span></label><?php endforeach; ?><label><input type="radio" name="amount" value="other"><span>Outro</span></label></fieldset>
+<fieldset class="jn-amounts"><legend>Qual valor?</legend><?php foreach ( $amounts as $irv_amount ) : ?><label class="jn-amount"><input type="radio" name="amount" value="<?php echo (int) $irv_amount[0]; ?>"<?php echo 50 === $irv_amount[0] ? ' checked' : ''; ?>><span><b>R$ <?php echo (int) $irv_amount[0]; ?></b><small><?php echo esc_html( $irv_amount[1] ); ?></small></span></label><?php endforeach; ?><label class="jn-amount"><input type="radio" name="amount" value="other"><span><b>Outro</b><small>Escolha o valor que quiser doar</small></span></label></fieldset>
 <label class="jn-other" hidden><span>Digite o valor (R$)</span><input type="number" min="5" step="1" inputmode="numeric" name="other" placeholder="Ex.: 150"></label>
+<label class="jn-fee"><input type="checkbox" name="fee" checked><span class="jn-fee__box" aria-hidden="true"></span><span class="jn-fee__txt">Gostaria de adicionar <strong data-fee>R$ 1,45</strong> para cobrir taxas de transação.</span></label>
 <a class="button button--pink jn-submit" data-donate-btn href="mailto:atendimento@institutoraphaelveiga.org.br?subject=Quero%20doar">Doar R$ 50</a>
 <p class="jn-note">A etapa de pagamento será conectada à conta recebedora oficial do Instituto. Por enquanto, o botão abre uma mensagem de e-mail com o valor escolhido.</p></form></div></section>
 

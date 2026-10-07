@@ -1299,3 +1299,26 @@ body.has-viewer{overflow:hidden}
 .jn-kicker::before{content:'';width:34px;height:4px;border-radius:3px;background:var(--pink-bright)}
 .jn-tile--5{grid-row:span 2}
 .irv-inner main .jn-form h2,.irv-inner main .jn-ways__title,.irv-inner main .jn-gallery__head h2{text-align:inherit}.jn-form,.jn-form h2{text-align:left}
+
+
+/* Valores de doação em cards, com a descrição de cada um (como no Wix) */
+.jn-amounts{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.jn-amounts legend{grid-column:1/-1}
+.jn-form .jn-amounts span.x{}
+.jn-amount span{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;min-height:148px;padding:20px 14px 16px;text-align:center;border-radius:14px}
+.jn-amount b{color:var(--blue);font-size:34px;line-height:1;letter-spacing:-1px;transition:color .2s ease}
+.jn-amount small{color:#3f4654;font-size:13.5px;font-weight:500;line-height:1.35;transition:color .2s ease}
+.jn-form .jn-amount input:checked+span{border-color:var(--pink);background:#fff;color:var(--ink);box-shadow:0 0 0 3px #dc2e5f24,0 12px 26px #dc2e5f26}
+.jn-amount input:checked+span b{color:var(--pink)}
+.jn-fee{position:relative;display:flex;align-items:flex-start;gap:12px;margin:0 0 22px;cursor:pointer;font-size:15px;line-height:1.4}
+.jn-fee input{position:absolute;opacity:0;width:1px;height:1px}
+.jn-fee__box{flex:0 0 26px;width:26px;height:26px;margin-top:-2px;border:2px solid #7d8696;border-radius:6px;background:#fff;transition:border-color .2s ease,background .2s ease}
+.jn-fee input:checked+.jn-fee__box{border-color:var(--blue);background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center/16px no-repeat}
+.jn-fee input:focus-visible+.jn-fee__box{outline:3px solid var(--blue);outline-offset:2px}
+@media(max-width:1100px){.jn-amount span{min-height:136px}.jn-amount b{font-size:30px}}
+@media(max-width:560px){.jn-amounts{grid-template-columns:repeat(2,minmax(0,1fr))}.jn-amount span{min-height:150px;padding:16px 10px 14px}.jn-amount b{font-size:28px}}
+.jn-form .jn-amounts .jn-amount>span{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;min-height:148px;padding:20px 14px 16px;text-align:center;border-radius:14px}
+.jn-form .jn-amount b,.jn-form .jn-amount small{display:block;text-align:center}
+.jn-form .jn-amount input:checked+span b{color:var(--pink)}
+@media(max-width:1100px){.jn-form .jn-amounts .jn-amount>span{min-height:136px}}
+@media(max-width:560px){.jn-form .jn-amounts .jn-amount>span{min-height:150px;padding:16px 10px 14px}}

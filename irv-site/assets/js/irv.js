@@ -121,15 +121,22 @@
     const other = form.querySelector('.jn-other');
     const otherInput = other && other.querySelector('input');
     const mail = 'mailto:atendimento@institutoraphaelveiga.org.br';
+    const feeBox = form.querySelector('[name=fee]');
+    const feeOut = form.querySelector('[data-fee]');
+    const money = function (n) { return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
     const update = function () {
       const freq = form.querySelector('[name=frequency]:checked');
       const amt = form.querySelector('[name=amount]:checked');
       const isOther = amt && amt.value === 'other';
       if (other) other.hidden = !isOther;
-      const value = isOther ? parseInt(otherInput && otherInput.value, 10) : parseInt(amt && amt.value, 10);
-      const ok = value > 0;
-      btn.textContent = ok ? 'Doar R$ ' + value + (freq && freq.value === 'mensal' ? ' por mês' : '') : 'Doar';
-      const subject = ok ? 'Quero doar R$ ' + value + ' (' + (freq ? freq.value : '1 vez') + ')' : 'Quero doar';
+      const base = isOther ? parseInt(otherInput && otherInput.value, 10) : parseInt(amt && amt.value, 10);
+      const ok = base > 0;
+      const fee = ok ? Math.round(base * 0.029 * 100) / 100 : 0;
+      if (feeOut) feeOut.textContent = money(ok ? fee : 0);
+      const total = ok ? base + (feeBox && feeBox.checked ? fee : 0) : 0;
+      const monthly = freq && freq.value === 'mensal';
+      btn.textContent = ok ? 'Doar ' + money(total) + (monthly ? ' por mês' : '') : 'Doar';
+      const subject = ok ? 'Quero doar ' + money(total) + ' (' + (freq ? freq.value : '1 vez') + (feeBox && feeBox.checked ? ', cobrindo a taxa de transação' : '') + ')' : 'Quero doar';
       btn.setAttribute('href', mail + '?subject=' + encodeURIComponent(subject));
     };
     form.addEventListener('change', update);
