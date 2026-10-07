@@ -68,7 +68,7 @@
   const targets = document.querySelectorAll([
     'main .eyebrow', 'main section h2', 'main .methodology-copy p', 'main .pillar',
     'main .impact-row', 'main .voice-card', 'main .join-ways article',
-    'main .video-stories article', 'main .news-list article', 'main .team-grid article',
+    'main .video-stories article', 'main .nw-feature', 'main .nw-card', 'main .team-grid article',
     'main .documents article', 'main .partner-grid li', 'main .achievements__grid article',
     'main .timeline article', 'main .history-years article', 'main .irv-triad article',
     'main .believe p', 'main .believe .button', 'main .donation > .shell > *',
