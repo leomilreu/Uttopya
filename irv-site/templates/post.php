@@ -87,7 +87,7 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 	<nav class="pt-crumbs" aria-label="Você está em"><a href="<?php echo esc_url( home_url( '/noticias/' ) ); ?>">Notícias</a><?php if ( $post['cats'] ) : ?><span aria-hidden="true">/</span><a href="<?php echo esc_url( home_url( '/noticias/categoria/' . $post['cats'][0] . '/' ) ); ?>"><?php echo esc_html( ucfirst( mb_strtolower( $categories[ $post['cats'][0] ] ) ) ); ?></a><?php endif; ?></nav>
 	<?php if ( $post['cats'] ) : ?><div class="nw-tags"><?php foreach ( $post['cats'] as $irv_cat ) : ?><a href="<?php echo esc_url( home_url( '/noticias/categoria/' . $irv_cat . '/' ) ); ?>"><?php echo esc_html( $categories[ $irv_cat ] ); ?></a><?php endforeach; ?></div><?php endif; ?>
 	<h1><?php echo esc_html( $post['title'] ); ?></h1>
-	<?php if ( $found ) : ?><p class="pt-meta"><span class="pt-meta__logo" aria-hidden="true"></span><span><strong>Instituto Raphael Veiga</strong><time><?php echo esc_html( $post['date'] ); ?></time></span></p><?php endif; ?>
+	<?php if ( $found ) : ?><p class="pt-meta"><time><?php echo esc_html( $post['date'] ); ?></time></p><?php endif; ?>
 </header>
 
 <?php if ( $post['image'] ) : ?><figure class="pt-cover shell"><img src="<?php echo irv_news_thumb( $post['image'] ); ?>" decoding="async" fetchpriority="high" alt="<?php echo esc_attr( $post['title'] ); ?>"></figure><?php endif; ?>

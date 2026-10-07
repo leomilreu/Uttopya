@@ -1522,3 +1522,8 @@ body.irv-home .hero::before{height:100%}
 body.irv-home .hero-inner{height:auto;padding-top:48px;padding-bottom:64px}
 body.irv-home .impact{margin-top:-32px}
 }
+
+/* v0.22 post: título mais largo e sem autor */
+body.irv-post .pt-head{max-width:none}
+body.irv-post .pt-head h1{max-width:none;text-wrap:pretty}
+body.irv-post .pt-meta{margin-top:20px}

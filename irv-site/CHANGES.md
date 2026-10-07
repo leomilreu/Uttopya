@@ -111,3 +111,6 @@ Revisão mobile: ritmo de seções único (36 px) em todas as páginas, h1 34 px
 
 ## 0.21.0
 Home mobile: herói passa a ter altura do conteúdo, sem vazio abaixo dos botões.
+
+## 0.22.0
+Post: título ocupa toda a largura do conteúdo; autor removido (fica só a data).
