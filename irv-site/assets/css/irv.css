@@ -1322,3 +1322,38 @@ body.has-viewer{overflow:hidden}
 .jn-form .jn-amount input:checked+span b{color:var(--pink)}
 @media(max-width:1100px){.jn-form .jn-amounts .jn-amount>span{min-height:136px}}
 @media(max-width:560px){.jn-form .jn-amounts .jn-amount>span{min-height:150px;padding:16px 10px 14px}}
+
+/* Números de impacto: centralizados em cada coluna */
+.impact-numbers>div,.impact-numbers>div:first-child,.impact-numbers>div:last-child{align-items:center;justify-content:center;padding:14px 20px;text-align:center}
+.impact-numbers b,.impact-numbers span{text-align:center}
+@media(max-width:900px){.impact-numbers>div:nth-child(odd){padding-left:20px}}
+@media(max-width:560px){.impact-numbers>div,.impact-numbers>div:first-child{padding:18px 0}}
+
+/* Cards de valores mais compactos: altura pelo conteúdo, sem sobra */
+.jn-form .jn-amounts{gap:10px}
+.jn-form .jn-amounts .jn-amount>span{min-height:0;gap:6px;padding:14px 12px 14px;border-radius:12px}
+.jn-form .jn-amount b{font-size:28px}
+.jn-form .jn-amount small{font-size:13px;line-height:1.3}
+@media(max-width:1100px){.jn-form .jn-amounts .jn-amount>span{min-height:0}}
+@media(max-width:560px){.jn-form .jn-amounts .jn-amount>span{min-height:0;padding:12px 8px}.jn-form .jn-amount b{font-size:25px}.jn-form .jn-amount small{font-size:12.5px}}
+.jn-form .jn-amounts .jn-amount{display:flex}
+.jn-form .jn-amounts .jn-amount>span{flex:1 1 auto;width:100%}
+
+/* Palavras destacadas dos títulos: sempre em Georgia itálico */
+.brush,.page-about .raphael-copy h2 strong,.raphael-copy h2 strong{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700}
+.brush{letter-spacing:-.5px}
+
+/* Hero de O que fazemos: a faixa cinza cobre a base da foto e a diagonal corta as pernas */
+.page-work .sports-hero img:not(.deco){z-index:0;mix-blend-mode:normal}
+.page-work .sports-hero{z-index:0}
+.page-work .work-band{position:relative;z-index:2}
+
+/* Palavras em destaque (rosa) em Georgia itálico, como "novos futuros." da home */
+.raphael-copy h2 strong,.page-about .raphael-copy h2 strong{font-family:inherit;font-style:normal;font-weight:800}
+.brush{color:var(--pink-bright);font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:1.08em;letter-spacing:-.5px;background:none}
+.jn-em{color:var(--pink-bright);font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700;font-size:1.12em;letter-spacing:-.5px}
+@media(max-width:560px){.jn-em{display:block;margin-top:4px}}
+
+/* Georgia nas palavras em destaque (precisa vencer "body.irv-site *") */
+body.irv-site .brush,body.irv-site .jn-em{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700}
+body.irv-site .raphael-copy h2 strong{font-family:'Red Hat Display',Arial,Helvetica,sans-serif;font-style:normal;font-weight:800}

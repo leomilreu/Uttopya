@@ -73,3 +73,8 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 
 ## 0.16.1
 - Faça parte: valores de doação em cards com o que cada um representa (R$ 30 sapatilha, R$ 50 luvas, R$ 70 uniforme, R$ 100 joelheiras, R$ 200 kit) e a opção "Gostaria de adicionar R$ … para cobrir taxas de transação" (marcada por padrão; 2,9% do valor, como no Wix). O botão mostra o total, ex.: "Doar R$ 51,45".
+
+## 0.16.2
+- Palavras em destaque (rosa) em Georgia itálico: "habilidades socioemocionais" (O que fazemos) e "fazer parte" (Faça parte, agora texto em vez de imagem). "Propósito" e "novos futuros." já eram. As regras precisam de `body.irv-site` porque `body.irv-site *` força a Red Hat Display em tudo.
+- Números de impacto centralizados em cada coluna; cards de valores da doação mais compactos e de mesma altura por linha.
+- O que fazemos: a faixa cinza cobre a base da foto e a diagonal corta as pernas da menina.
