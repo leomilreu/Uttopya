@@ -5,7 +5,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 $irv_nav = array(
-	'home'  => array( 'Home', $home ),
+	'home'  => array( 'Início', $home ),
 	'about' => array( 'Quem somos', home_url( '/quem-somos/' ) ),
 	'work'  => array( 'O que fazemos', home_url( '/o-que-fazemos/' ) ),
 	'news'  => array( 'Notícias', home_url( '/noticias/' ) ),

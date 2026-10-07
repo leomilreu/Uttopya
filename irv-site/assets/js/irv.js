@@ -42,7 +42,7 @@
    Só roda com JavaScript e respeita "reduzir movimento".
    ========================================================================== */
 (function () {
-  const inner = document.body.classList.contains('irv-inner') || document.body.classList.contains('irv-post');
+  const inner = document.body.classList.contains('irv-inner') || document.body.classList.contains('irv-post') || document.body.classList.contains('irv-home');
   if (!inner) return;
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -72,7 +72,8 @@
     'main .documents article', 'main .partner-grid li', 'main .achievements__grid article',
     'main .timeline article', 'main .history-years article', 'main .irv-triad article',
     'main .believe p', 'main .believe .button', 
-    'main .origin-card', 'main .origin-story', 'main .post-related article'
+    'main .origin-card', 'main .origin-story', 'main .post-related article',
+    'main .about-copy', 'main .about-image', 'main .fronts h2', 'main .front-grid article', 'main .voices .voice', 'main .join-card', 'main .news-grid article'
   ].join(','));
   const seen = new Map();
   targets.forEach(function (el) {
@@ -92,7 +93,7 @@
   targets.forEach(function (el) { io.observe(el); });
 
   // Números de impacto contam até o valor ao aparecer.
-  document.querySelectorAll('.impact-numbers b').forEach(function (el) {
+  document.querySelectorAll('.impact-numbers b, .impact strong').forEach(function (el) {
     const end = parseInt(el.textContent.replace(/\D/g, ''), 10);
     if (!end) return;
     el.dataset.end = String(end);
@@ -205,4 +206,38 @@
       v.addEventListener('ended', function () { stop(card); });
     });
   });
+})();
+
+
+/* Notícia: barra de leitura e botão de copiar o link. */
+(function () {
+  if (!document.body.classList.contains('irv-post')) return;
+  const bar = document.querySelector('.pt-progress i');
+  const article = document.querySelector('.pt-article');
+  if (bar && article) {
+    const update = function () {
+      const r = article.getBoundingClientRect();
+      const total = r.height - window.innerHeight * 0.4;
+      const done = Math.min(Math.max((window.innerHeight * 0.2 - r.top) / Math.max(total, 1), 0), 1);
+      bar.style.transform = 'scaleX(' + done.toFixed(3) + ')';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+  const copy = document.querySelector('[data-copy]');
+  if (copy) {
+    const msg = copy.querySelector('.pt-copied');
+    copy.addEventListener('click', function () {
+      const url = copy.getAttribute('data-copy');
+      const done = function () {
+        if (!msg) return;
+        msg.textContent = 'Link copiado';
+        msg.classList.add('is-on');
+        setTimeout(function () { msg.classList.remove('is-on'); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done);
+      else done();
+    });
+  }
 })();

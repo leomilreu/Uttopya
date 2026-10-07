@@ -86,3 +86,11 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 - Faça parte: o vídeo do depoimento abre dentro do próprio card; enquanto o MP4 nosso não existe em `assets/videos/`, toca a versão 720p (reserva 480p) direto do Wix.
 - Números de impacto no estilo do Wix: fundo branco, números rosa grandes, divisórias e pincel rosa no canto.
 - Galeria sem legendas visíveis (a descrição fica só como rótulo de acessibilidade).
+
+## 0.17.0
+- Notícia: página nova (trilha Notícias / categoria, título grande, capa em destaque, autor e data, texto de leitura confortável com abertura em destaque, barra de progresso, botões de compartilhar WhatsApp/Facebook/LinkedIn/copiar link, hashtags como etiquetas, anterior/próxima e "Leia também").
+- Vídeos nas notícias (ordem conferida pela API do Wix): "Um time só vence…" (snapinsta, ao final do texto) e "Esporte Record" (após o 3º parágrafo, com botão para o R7). Tocam a versão 720p do Wix (reserva 480p) enquanto o MP4 nosso não existe em `assets/videos/` (`noticia-um-time-so-vence.mp4`, `noticia-esporte-record.mp4`).
+- Menu e rodapé: "Home" virou "Início".
+- Quem somos: pontos da linha do tempo centralizados nos cards (2022 marca o começo).
+- Home: imagens abaixo da dobra com carregamento preguiçoso, entrada suave ao rolar e números do topo que contam (respeita "reduzir movimento").
+- Removida a pincelada rosa da seção de números (Faça parte).

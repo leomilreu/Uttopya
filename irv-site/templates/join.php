@@ -70,7 +70,7 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 <a class="button button--pink jn-submit" data-donate-btn href="mailto:atendimento@institutoraphaelveiga.org.br?subject=Quero%20doar">Doar R$ 50</a>
 <p class="jn-note">A etapa de pagamento será conectada à conta recebedora oficial do Instituto. Por enquanto, o botão abre uma mensagem de e-mail com o valor escolhido.</p></form></div></section>
 
-<section class="impact-wide impact-wide--light"><img class="impact-brush" src="<?php echo $wix( 'e09d66_99566f94404a4aef9fbe32cdccf1d561~mv2.png' ); ?>" width="553" height="425" loading="lazy" decoding="async" alt=""><div class="shell"><p class="eyebrow">Faça parte</p><h2>Seu apoio gera impacto real</h2><div class="impact-numbers"><div><b>188</b><span>participantes por ano</span></div><div><b>300</b><span>familiares envolvidos</span></div><div><b>350</b><span>uniformes</span></div><div><b>2200</b><span>horas de desenvolvimento</span></div></div></div></section>
+<section class="impact-wide impact-wide--light"><div class="shell"><p class="eyebrow">Faça parte</p><h2>Seu apoio gera impacto real</h2><div class="impact-numbers"><div><b>188</b><span>participantes por ano</span></div><div><b>300</b><span>familiares envolvidos</span></div><div><b>350</b><span>uniformes</span></div><div><b>2200</b><span>horas de desenvolvimento</span></div></div></div></section>
 
 <section class="jn-stories shell"><p class="eyebrow">Depoimentos dos participantes do IRV</p><div class="jn-stories__grid"><?php foreach ( $stories as $story ) :
 	$irv_srcs = array();

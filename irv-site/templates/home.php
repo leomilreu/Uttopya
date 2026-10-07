@@ -12,16 +12,17 @@ $home  = '1' === get_option( 'irv_standalone_mode', '0' ) ? home_url( '/' ) : ho
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<script>document.documentElement.classList.add("js")</script>
 	<link rel="stylesheet" href="<?php echo $asset( 'assets/css/irv.css?v=' . IRV_SITE_VERSION ); ?>">
 </head>
-<body class="irv-site">
+<body class="irv-site irv-home">
 <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 <header class="site-header">
 	<div class="shell header-inner">
 		<a class="brand" href="<?php echo esc_url( $home ); ?>" aria-label="Instituto Raphael Veiga — início"><img src="<?php echo $asset( 'assets/images/logo.avif' ); ?>" width="264" height="64" alt="Instituto Raphael Veiga"></a>
 		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-irv">Menu</button>
 		<nav id="menu-irv" aria-label="Navegação principal">
-			<a aria-current="page" href="#inicio">Home</a><a href="<?php echo esc_url( home_url( '/quem-somos/' ) ); ?>">Quem somos</a><a href="<?php echo esc_url( home_url( '/o-que-fazemos/' ) ); ?>">O que fazemos</a><a href="<?php echo esc_url( home_url( '/noticias/' ) ); ?>">Notícias</a><a href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Faça parte</a>
+			<a aria-current="page" href="#inicio">Início</a><a href="<?php echo esc_url( home_url( '/quem-somos/' ) ); ?>">Quem somos</a><a href="<?php echo esc_url( home_url( '/o-que-fazemos/' ) ); ?>">O que fazemos</a><a href="<?php echo esc_url( home_url( '/noticias/' ) ); ?>">Notícias</a><a href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Faça parte</a>
 		</nav>
 		<a class="button button--pink header-cta" href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Doe agora</a>
 	</div>
@@ -45,7 +46,7 @@ $home  = '1' === get_option( 'irv_standalone_mode', '0' ) ? home_url( '/' ) : ho
 	</section>
 
 	<section class="about shell" id="quem-somos">
-		<div class="about-image"><img src="<?php echo $asset( 'assets/images/about.avif' ); ?>" alt="Menino de costas com camiseta do Instituto Raphael Veiga"></div>
+		<div class="about-image"><img loading="lazy" decoding="async" src="<?php echo $asset( 'assets/images/about.avif' ); ?>" alt="Menino de costas com camiseta do Instituto Raphael Veiga"></div>
 		<div class="about-copy"><p class="eyebrow">Sobre o IRV</p><h2>Quem somos</h2><p>Desde 2022, o Instituto Raphael Veiga promove oportunidades de desenvolvimento integral para crianças e adolescentes, por meio do esporte, da arte e da cultura.</p><p>Em parceria com as famílias e com o território, trabalhamos competências socioemocionais como autonomia, respeito, responsabilidade e colaboração.</p><a class="text-link" href="<?php echo esc_url( home_url( '/quem-somos/' ) ); ?>">Conheça a nossa história <span aria-hidden="true">⟶</span></a></div>
 	</section>
 
@@ -62,9 +63,9 @@ $home  = '1' === get_option( 'irv_standalone_mode', '0' ) ? home_url( '/' ) : ho
 
 	<section class="voices shell">
 		<header><p class="eyebrow">Vozes que inspiram</p><h2>Quem são os nossos<br>participantes</h2></header>
-		<div class="voice"><img src="<?php echo $asset( 'assets/images/participant-1.avif' ); ?>" alt="Karlos sorrindo e fazendo sinal de positivo"><blockquote>gosto de futebol,<br>handebol e vôlei</blockquote><p><strong>Karlos</strong>, 11 anos</p></div>
-		<div class="voice"><img src="<?php echo $asset( 'assets/images/participant-2.avif' ); ?>" alt="Laura sorrindo"><blockquote>gosto de<br>jogar vôlei</blockquote><p><strong>Laura</strong>, 11 anos</p></div>
-		<div class="voice"><img src="<?php echo $asset( 'assets/images/participant-3.avif' ); ?>" alt="Mariana sorrindo"><blockquote>gosto de música,<br>ouço todas</blockquote><p><strong>Mariana</strong>, 13 anos</p></div>
+		<div class="voice"><img loading="lazy" decoding="async" src="<?php echo $asset( 'assets/images/participant-1.avif' ); ?>" alt="Karlos sorrindo e fazendo sinal de positivo"><blockquote>gosto de futebol,<br>handebol e vôlei</blockquote><p><strong>Karlos</strong>, 11 anos</p></div>
+		<div class="voice"><img loading="lazy" decoding="async" src="<?php echo $asset( 'assets/images/participant-2.avif' ); ?>" alt="Laura sorrindo"><blockquote>gosto de<br>jogar vôlei</blockquote><p><strong>Laura</strong>, 11 anos</p></div>
+		<div class="voice"><img loading="lazy" decoding="async" src="<?php echo $asset( 'assets/images/participant-3.avif' ); ?>" alt="Mariana sorrindo"><blockquote>gosto de música,<br>ouço todas</blockquote><p><strong>Mariana</strong>, 13 anos</p></div>
 	</section>
 
 	<section class="join shell" id="faca-parte">
@@ -77,9 +78,9 @@ $home  = '1' === get_option( 'irv_standalone_mode', '0' ) ? home_url( '/' ) : ho
 	<section class="news shell" id="noticias">
 		<header><div><p class="eyebrow">Últimas notícias</p><h2>Histórias em movimento</h2></div><a class="news-all" href="<?php echo esc_url( home_url( '/noticias/' ) ); ?>">Ver todas as notícias <span aria-hidden="true">⟶</span></a></header>
 		<div class="news-grid">
-			<article><a href="<?php echo esc_url( home_url( '/noticias/um-time-so-vence-quando-todos-jogam-juntos/' ) ); ?>"><img src="<?php echo $asset( 'assets/images/news-1.avif' ); ?>" alt="Um time só vence quando todos jogam juntos"><div><span class="news-category">Parcerias</span><small>10 de jul.</small><h3>Um time só vence quando todos jogam juntos</h3><span class="news-read">Ler matéria ⟶</span></div></a></article>
-			<article><a href="<?php echo esc_url( home_url( '/noticias/dia-da-familia/' ) ); ?>"><img src="<?php echo $asset( 'assets/images/news-2.avif' ); ?>" alt="Dia da Família"><div><span class="news-category">Eventos</span><small>8 de jul.</small><h3>Dia da Família</h3><span class="news-read">Ler matéria ⟶</span></div></a></article>
-			<article><a href="<?php echo esc_url( home_url( '/noticias/estamos-em-recesso/' ) ); ?>"><img src="<?php echo $asset( 'assets/images/news-3.avif' ); ?>" alt="Estamos em recesso"><div><span class="news-category">Informativos</span><small>6 de jul.</small><h3>Estamos em recesso</h3><span class="news-read">Ler matéria ⟶</span></div></a></article>
+			<article><a href="<?php echo esc_url( home_url( '/noticias/um-time-so-vence-quando-todos-jogam-juntos/' ) ); ?>"><img loading="lazy" decoding="async" src="<?php echo $asset( 'assets/images/news-1.avif' ); ?>" alt="Um time só vence quando todos jogam juntos"><div><span class="news-category">Parcerias</span><small>10 de jul.</small><h3>Um time só vence quando todos jogam juntos</h3><span class="news-read">Ler matéria ⟶</span></div></a></article>
+			<article><a href="<?php echo esc_url( home_url( '/noticias/dia-da-familia/' ) ); ?>"><img loading="lazy" decoding="async" src="<?php echo $asset( 'assets/images/news-2.avif' ); ?>" alt="Dia da Família"><div><span class="news-category">Eventos</span><small>8 de jul.</small><h3>Dia da Família</h3><span class="news-read">Ler matéria ⟶</span></div></a></article>
+			<article><a href="<?php echo esc_url( home_url( '/noticias/estamos-em-recesso/' ) ); ?>"><img loading="lazy" decoding="async" src="<?php echo $asset( 'assets/images/news-3.avif' ); ?>" alt="Estamos em recesso"><div><span class="news-category">Informativos</span><small>6 de jul.</small><h3>Estamos em recesso</h3><span class="news-read">Ler matéria ⟶</span></div></a></article>
 		</div>
 	</section>
 
@@ -88,7 +89,7 @@ $home  = '1' === get_option( 'irv_standalone_mode', '0' ) ? home_url( '/' ) : ho
 
 <footer class="site-footer"><div class="shell footer-grid">
 	<div class="footer-brand"><img src="<?php echo $asset( 'assets/images/footer-logo.avif' ); ?>" alt="Instituto Raphael Veiga"><div class="social"><a href="https://www.instagram.com/institutoraphaelveiga" aria-label="Instagram"><img src="<?php echo $asset( 'assets/images/instagram.png' ); ?>" alt=""></a><a href="https://www.facebook.com/instituto.raphaelveiga" aria-label="Facebook"><img src="<?php echo $asset( 'assets/images/facebook-app-round-white-icon.webp' ); ?>" alt=""></a><a href="https://www.linkedin.com/company/instituto-raphael-veiga/" aria-label="LinkedIn"><img src="<?php echo $asset( 'assets/wix/11062b_7dcffe5daf2944b7be0a46ac6d472634~mv2.png' ); ?>" alt=""></a></div></div>
-	<div><h2>Navegação</h2><a href="#inicio">Home</a><a href="#quem-somos">Quem somos</a><a href="#frentes">O que fazemos</a><a href="#noticias">Notícias</a><a href="#faca-parte">Faça parte</a></div>
+	<div><h2>Navegação</h2><a href="#inicio">Início</a><a href="#quem-somos">Quem somos</a><a href="#frentes">O que fazemos</a><a href="#noticias">Notícias</a><a href="#faca-parte">Faça parte</a></div>
 	<div><h2>Transparência</h2><a href="https://fd050c3b-58d1-4440-8228-a7a886a60b02.filesusr.com/ugd/e09d66_f3fcf788dcee4b7e95cda50f5fe553d8.pdf">Relatórios de Atividades</a><a href="https://fd050c3b-58d1-4440-8228-a7a886a60b02.filesusr.com/ugd/e09d66_fccd29c9f2b0467f958a45c06b9fca54.pdf">Prestação de contas</a><a href="<?php echo esc_url( home_url( '/politica-de-privacidade/' ) ); ?>">Política de privacidade</a><p class="footer-cnpj">CNPJ: 47.732.142/0001-07</p></div>
 	<div><h2>Contato</h2><a href="https://wa.me/551120123307">(11) 2012-3307</a><a href="mailto:atendimento@institutoraphaelveiga.org.br">atendimento@institutoraphaelveiga.org.br</a><p>Rua Dr. Paulo Queiroz, 1244<br>Jardim Nove de Julho<br>São Paulo/SP</p></div>
 </div><div class="footer-bottom"><div class="shell"><div class="footer-signature">© Instituto Raphael Veiga · <span class="project-credit" data-label="UM PROJETO TOMATO"><span class="project-credit__text"><a class="project-credit__link" href="https://tomatoconsultoria.com/" target="_blank" rel="noopener noreferrer"><span>UM PROJETO </span><span class="project-credit__brand">TOMATO</span></a></span></span></div></div></div></footer>
