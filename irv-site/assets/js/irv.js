@@ -177,3 +177,31 @@
     document.body.classList.remove('has-viewer');
   });
 })();
+
+
+/* Depoimentos: o vídeo toca dentro do próprio card, no lugar da foto. */
+(function () {
+  const cards = document.querySelectorAll('[data-inline-video]');
+  if (!cards.length) return;
+  const stop = function (card) {
+    const v = card.querySelector('video');
+    if (!v) return;
+    v.pause();
+    v.remove();
+    card.classList.remove('is-playing');
+    card.disabled = false;
+  };
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      cards.forEach(function (other) { if (other !== card) stop(other); });
+      if (card.classList.contains('is-playing')) return;
+      const v = document.createElement('video');
+      v.src = card.getAttribute('data-src');
+      v.controls = true; v.autoplay = true; v.playsInline = true;
+      v.setAttribute('aria-label', card.getAttribute('data-caption') || 'Vídeo');
+      card.appendChild(v);
+      card.classList.add('is-playing');
+      v.addEventListener('ended', function () { stop(card); });
+    });
+  });
+})();

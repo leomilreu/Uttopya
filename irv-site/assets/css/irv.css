@@ -1357,3 +1357,8 @@ body.has-viewer{overflow:hidden}
 /* Georgia nas palavras em destaque (precisa vencer "body.irv-site *") */
 body.irv-site .brush,body.irv-site .jn-em{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:700}
 body.irv-site .raphael-copy h2 strong{font-family:'Red Hat Display',Arial,Helvetica,sans-serif;font-style:normal;font-weight:800}
+
+/* Vídeo do depoimento dentro do card */
+.jn-story__media.is-playing{cursor:default;background:#000}
+.jn-story__media video{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;background:#000;object-fit:contain}
+.jn-story__media.is-playing img,.jn-story__media.is-playing .jn-play{opacity:0;pointer-events:none}
