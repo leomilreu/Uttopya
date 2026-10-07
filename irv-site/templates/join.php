@@ -50,6 +50,18 @@ $gallery = array(
 	array( 'g10.webp', 'Turma do Jr. NBA', 'image' ),
 	array( 'g11.webp', 'Visita ao Museu do Futebol', 'image' ),
 	array( 'g12.webp', 'Crianças observando uma tela interativa', 'image' ),
+	array( 'g13.webp', 'Treino de futsal no Instituto', 'image' ),
+	array( 'g14.webp', 'Menino conduzindo a bola na quadra', 'image' ),
+	array( 'g15.webp', 'Garoto driblando o cone no treino', 'image' ),
+	array( 'g16.webp', 'Jogo de futsal na quadra do Instituto', 'image' ),
+	array( 'g17.webp', 'Crianças disputando a bola no treino', 'image' ),
+	array( 'g18.webp', 'Partida de futsal no fim da tarde', 'image' ),
+	array( 'g19.webp', 'Aula de futsal com o professor', 'image' ),
+	array( 'g20.webp', 'Menino chutando a bola', 'image' ),
+	array( 'g21.webp', 'Dois amigos abraçados após a aula', 'image' ),
+	array( 'g22.webp', 'Crianças comemorando em quadra', 'image' ),
+	array( 'g23.webp', 'Pés de um aluno com a bola de futsal', 'image' ),
+	array( 'g24.webp', 'Mães acompanhando as atividades', 'image' ),
 );
 $gallery = array_values( array_filter( $gallery, static function ( $g ) use ( $has ) { return $has( 'assets/gallery/' . $g[0] ); } ) );
 
@@ -83,7 +95,7 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 	}
 	?><article class="jn-story"><<?php echo $irv_srcs ? 'button type="button" data-inline-video data-srcs="' . esc_attr( implode( ' ', $irv_srcs ) ) . '" data-caption="' . esc_attr( $story[0] ) . '"' : 'div'; ?> class="jn-story__media"><img src="<?php echo $asset( 'assets/join/' . $story[2] ); ?>" loading="lazy" decoding="async" alt="<?php echo esc_attr( $story[0] ); ?>"><span class="jn-play" aria-hidden="true"></span><?php echo $irv_srcs ? '<span class="sr-only">Reproduzir vídeo: ' . esc_html( $story[0] ) . '</span></button>' : '</div>'; ?><h3><?php echo esc_html( $story[0] ); ?></h3><p><?php echo esc_html( $story[1] ); ?></p></article><?php endforeach; ?></div></section>
 
-<?php if ( $gallery ) : ?><section class="jn-gallery shell" aria-labelledby="jn-gallery-title"><div class="jn-gallery__head"><p class="eyebrow">Momentos do IRV</p><h2 id="jn-gallery-title">Galeria</h2></div><div class="jn-gallery__grid"><?php foreach ( $gallery as $irv_i => $item ) : ?><button type="button" class="jn-tile jn-tile--<?php echo (int) ( $irv_i % 6 ); ?>" data-viewer data-type="<?php echo esc_attr( $item[2] ); ?>" data-src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" aria-label="<?php echo esc_attr( $item[1] ); ?>"><img src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" loading="lazy" decoding="async" alt=""></button><?php endforeach; ?></div></section><?php endif; ?>
+<?php if ( $gallery ) : ?><section class="jn-gallery shell" aria-labelledby="jn-gallery-title"><div class="jn-gallery__head"><p class="eyebrow">Momentos do IRV</p><h2 id="jn-gallery-title">Galeria</h2></div><div class="jn-gallery__grid"><?php foreach ( $gallery as $irv_i => $item ) : ?><button type="button" class="jn-tile jn-tile--<?php echo (int) ( $irv_i % 6 ); ?><?php echo $irv_i >= 12 ? ' jn-tile--extra' : ''; ?>" data-viewer data-type="<?php echo esc_attr( $item[2] ); ?>" data-src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" aria-label="<?php echo esc_attr( $item[1] ); ?>"><img src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" loading="lazy" decoding="async" alt=""></button><?php endforeach; ?></div><?php if ( count( $gallery ) > 12 ) : ?><p class="jn-gallery__more"><button type="button" class="button button--pink" data-gallery-more aria-expanded="false">Ver mais fotos</button></p><?php endif; ?></section><?php endif; ?>
 
 <dialog class="jn-viewer" id="jn-viewer" aria-label="Visualizador de mídia"><button type="button" class="jn-viewer__close" data-viewer-close aria-label="Fechar">×</button><div class="jn-viewer__stage"></div></dialog>
 

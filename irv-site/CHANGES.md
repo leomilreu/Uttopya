@@ -123,3 +123,10 @@ Rodapé: "UM PROJETO TOMATO + UTTOPYA" com link individual em cada nome; no celu
 
 ## 0.25.0
 Rodapé: créditos com mais peso de fonte (600; nomes em 800).
+
+## 0.26.0
+- Parceiros: logos originais do Wix (pasta "logo parceiros"), recortados e padronizados; Prefeitura/Saúde mantém o recorte anterior (não existe arquivo no Wix).
+- Faça parte: vídeos de depoimento hospedados no próprio site (assets/videos, 720p); galeria com +12 fotos de futsal e botão "Ver mais fotos".
+- Posts: vídeos hospedados em assets/videos.
+- Quem somos (celular): botões do topo em largura total.
+Obs.: os MP4 ficam apenas no servidor (não versionados).

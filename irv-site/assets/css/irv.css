@@ -1536,3 +1536,8 @@ body.irv-site .footer-credit a:hover,body.irv-site .footer-credit a:focus-visibl
 @media(max-width:560px){body.irv-site .footer-signature{display:flex;flex-direction:column;align-items:center;gap:4px}body.irv-site .footer-dot{display:none}}
 body.irv-site .footer-signature{font-weight:600}
 body.irv-site .footer-credit a{font-weight:800}
+
+/* v0.26 galeria: 12 fotos visíveis e botão "Ver mais fotos" */
+.jn-gallery:not(.is-open) .jn-tile--extra{display:none}
+.jn-gallery__more{margin:28px 0 0;text-align:center}
+@media(max-width:560px){body.page-about .wix-about-hero .hero-actions{display:flex;flex-direction:column;align-items:stretch;gap:14px;width:100%}body.page-about .wix-about-hero .hero-actions .button{width:100%}}

@@ -260,3 +260,16 @@
   window.addEventListener('resize', queue);
   update();
 })();
+
+/* Galeria: mostra as demais fotos ao clicar em "Ver mais fotos". */
+(function () {
+  const btn = document.querySelector('[data-gallery-more]');
+  const box = document.querySelector('.jn-gallery');
+  if (!btn || !box) return;
+  btn.addEventListener('click', function () {
+    const open = box.classList.toggle('is-open');
+    btn.textContent = open ? 'Ver menos fotos' : 'Ver mais fotos';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) box.scrollIntoView({ block: 'start' });
+  });
+})();
