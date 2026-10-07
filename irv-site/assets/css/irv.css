@@ -1056,3 +1056,8 @@ body.irv-site :where(a,span,strong,em){line-height:inherit}
 /* O que fazemos: faixa de doação em azul (sem a newsletter antes do rodapé) */
 .page-work .believe{background:var(--blue)}
 .page-work .believe .button{background:var(--pink);color:#fff}
+
+/* Espaço entre seções mais compacto (igual em todas) */
+.page-work{--sy:56px}
+@media(max-width:900px){.page-work{--sy:44px}}
+@media(max-width:560px){.page-work{--sy:36px}}
