@@ -31,9 +31,9 @@ $amounts = array(
  * arquivo MP4 para assets/videos/ com o nome indicado; sem o arquivo, o card fica só com a foto.
  */
 $stories = array(
-	array( 'Conheça o Paulo', 'Veja o Paulo contando sobre o IRV e como foi importante pra ele ter essa oportunidade.', 'story-1.webp', 'depoimento-paulo.mp4' ),
-	array( 'Conheça a Ludmila', 'Veja o que a Ludmila tem a dizer sobre o processo de entrada dela e como tem sido sua participação no IRV.', 'story-2.webp', 'depoimento-ludmila.mp4' ),
-	array( 'Saiba mais sobre a Clarissa', 'Clarissa falando os motivos que fazem do IRV um lugar especial.', 'story-3.webp', 'depoimento-clarissa.mp4' ),
+	array( 'Conheça o Paulo', 'Veja o Paulo contando sobre o IRV e como foi importante pra ele ter essa oportunidade.', 'story-1.webp', 'depoimento-paulo.mp4', 'e09d66_f1683b87cfa94e45874ad1436044da41' ),
+	array( 'Conheça a Ludmila', 'Veja o que a Ludmila tem a dizer sobre o processo de entrada dela e como tem sido sua participação no IRV.', 'story-2.webp', 'depoimento-ludmila.mp4', 'e09d66_f12500b7dc91475981db827fd58bae04' ),
+	array( 'Saiba mais sobre a Clarissa', 'Clarissa falando os motivos que fazem do IRV um lugar especial.', 'story-3.webp', 'depoimento-clarissa.mp4', 'e09d66_5e71f874edb94b038e737933e2b78538' ),
 );
 
 /* Galeria: arquivo (em assets/gallery/), legenda e tipo (foto ou vídeo). Itens sem arquivo não aparecem. */
@@ -70,13 +70,22 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 <a class="button button--pink jn-submit" data-donate-btn href="mailto:atendimento@institutoraphaelveiga.org.br?subject=Quero%20doar">Doar R$ 50</a>
 <p class="jn-note">A etapa de pagamento será conectada à conta recebedora oficial do Instituto. Por enquanto, o botão abre uma mensagem de e-mail com o valor escolhido.</p></form></div></section>
 
-<section class="impact-wide"><div class="shell"><p class="eyebrow">Faça parte</p><h2>Seu apoio gera impacto real</h2><div class="impact-numbers"><div><b>188</b><span>participantes por ano</span></div><div><b>300</b><span>familiares envolvidos</span></div><div><b>350</b><span>uniformes</span></div><div><b>2200</b><span>horas de desenvolvimento</span></div></div></div></section>
+<section class="impact-wide impact-wide--light"><img class="impact-brush" src="<?php echo $wix( 'e09d66_99566f94404a4aef9fbe32cdccf1d561~mv2.png' ); ?>" width="553" height="425" loading="lazy" decoding="async" alt=""><div class="shell"><p class="eyebrow">Faça parte</p><h2>Seu apoio gera impacto real</h2><div class="impact-numbers"><div><b>188</b><span>participantes por ano</span></div><div><b>300</b><span>familiares envolvidos</span></div><div><b>350</b><span>uniformes</span></div><div><b>2200</b><span>horas de desenvolvimento</span></div></div></div></section>
 
-<section class="jn-stories shell"><p class="eyebrow">Depoimentos dos participantes do IRV</p><div class="jn-stories__grid"><?php foreach ( $stories as $story ) : $irv_video = $has( 'assets/videos/' . $story[3] ) ? $asset( 'assets/videos/' . $story[3] ) : ''; ?><article class="jn-story"><<?php echo $irv_video ? 'button type="button" data-inline-video data-src="' . esc_attr( $irv_video ) . '" data-caption="' . esc_attr( $story[0] ) . '"' : 'div'; ?> class="jn-story__media"><img src="<?php echo $asset( 'assets/join/' . $story[2] ); ?>" loading="lazy" decoding="async" alt="<?php echo esc_attr( $story[0] ); ?>"><span class="jn-play" aria-hidden="true"></span><?php echo $irv_video ? '<span class="sr-only">Reproduzir vídeo</span></button>' : '</div>'; ?><h3><?php echo esc_html( $story[0] ); ?></h3><p><?php echo esc_html( $story[1] ); ?></p></article><?php endforeach; ?></div></section>
+<section class="jn-stories shell"><p class="eyebrow">Depoimentos dos participantes do IRV</p><div class="jn-stories__grid"><?php foreach ( $stories as $story ) :
+	$irv_srcs = array();
+	if ( $has( 'assets/videos/' . $story[3] ) ) {
+		$irv_srcs[] = IRV_SITE_URL . 'assets/videos/' . $story[3];
+	}
+	if ( ! empty( $story[4] ) ) { // enquanto o arquivo local não existe, usa a versão do Wix
+		$irv_srcs[] = 'https://video.wixstatic.com/video/' . $story[4] . '/720p/mp4/file.mp4';
+		$irv_srcs[] = 'https://video.wixstatic.com/video/' . $story[4] . '/480p/mp4/file.mp4';
+	}
+	?><article class="jn-story"><<?php echo $irv_srcs ? 'button type="button" data-inline-video data-srcs="' . esc_attr( implode( ' ', $irv_srcs ) ) . '" data-caption="' . esc_attr( $story[0] ) . '"' : 'div'; ?> class="jn-story__media"><img src="<?php echo $asset( 'assets/join/' . $story[2] ); ?>" loading="lazy" decoding="async" alt="<?php echo esc_attr( $story[0] ); ?>"><span class="jn-play" aria-hidden="true"></span><?php echo $irv_srcs ? '<span class="sr-only">Reproduzir vídeo: ' . esc_html( $story[0] ) . '</span></button>' : '</div>'; ?><h3><?php echo esc_html( $story[0] ); ?></h3><p><?php echo esc_html( $story[1] ); ?></p></article><?php endforeach; ?></div></section>
 
-<?php if ( $gallery ) : ?><section class="jn-gallery shell" aria-labelledby="jn-gallery-title"><div class="jn-gallery__head"><p class="eyebrow">Momentos do IRV</p><h2 id="jn-gallery-title">Galeria</h2></div><div class="jn-gallery__grid"><?php foreach ( $gallery as $irv_i => $item ) : ?><button type="button" class="jn-tile jn-tile--<?php echo (int) ( $irv_i % 6 ); ?>" data-viewer data-type="<?php echo esc_attr( $item[2] ); ?>" data-src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" data-caption="<?php echo esc_attr( $item[1] ); ?>"><img src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" loading="lazy" decoding="async" alt="<?php echo esc_attr( $item[1] ); ?>"><span class="jn-tile__cap"><?php echo esc_html( $item[1] ); ?></span></button><?php endforeach; ?></div></section><?php endif; ?>
+<?php if ( $gallery ) : ?><section class="jn-gallery shell" aria-labelledby="jn-gallery-title"><div class="jn-gallery__head"><p class="eyebrow">Momentos do IRV</p><h2 id="jn-gallery-title">Galeria</h2></div><div class="jn-gallery__grid"><?php foreach ( $gallery as $irv_i => $item ) : ?><button type="button" class="jn-tile jn-tile--<?php echo (int) ( $irv_i % 6 ); ?>" data-viewer data-type="<?php echo esc_attr( $item[2] ); ?>" data-src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" aria-label="<?php echo esc_attr( $item[1] ); ?>"><img src="<?php echo $asset( 'assets/gallery/' . $item[0] ); ?>" loading="lazy" decoding="async" alt=""></button><?php endforeach; ?></div></section><?php endif; ?>
 
-<dialog class="jn-viewer" id="jn-viewer" aria-label="Visualizador de mídia"><button type="button" class="jn-viewer__close" data-viewer-close aria-label="Fechar">×</button><div class="jn-viewer__stage"></div><p class="jn-viewer__cap"></p></dialog>
+<dialog class="jn-viewer" id="jn-viewer" aria-label="Visualizador de mídia"><button type="button" class="jn-viewer__close" data-viewer-close aria-label="Fechar">×</button><div class="jn-viewer__stage"></div></dialog>
 
 <?php require IRV_SITE_DIR . 'templates/partials/newsletter.php'; ?>
 

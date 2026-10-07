@@ -148,7 +148,6 @@
   const viewer = document.getElementById('jn-viewer');
   if (!viewer || typeof viewer.showModal !== 'function') return;
   const stage = viewer.querySelector('.jn-viewer__stage');
-  const cap = viewer.querySelector('.jn-viewer__cap');
   const close = function () { viewer.close(); };
   document.querySelectorAll('[data-viewer]').forEach(function (el) {
     el.addEventListener('click', function () {
@@ -162,10 +161,9 @@
         node.src = src;
       } else {
         node = document.createElement('img');
-        node.src = src; node.alt = el.getAttribute('data-caption') || '';
+        node.src = src; node.alt = el.getAttribute('aria-label') || '';
       }
       stage.appendChild(node);
-      cap.textContent = el.getAttribute('data-caption') || '';
       document.body.classList.add('has-viewer');
       viewer.showModal();
     });
@@ -196,8 +194,11 @@
       cards.forEach(function (other) { if (other !== card) stop(other); });
       if (card.classList.contains('is-playing')) return;
       const v = document.createElement('video');
-      v.src = card.getAttribute('data-src');
-      v.controls = true; v.autoplay = true; v.playsInline = true;
+      const srcs = (card.getAttribute('data-srcs') || '').split(' ').filter(Boolean);
+      v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
+      let tried = 0;
+      v.src = srcs[0];
+      v.addEventListener('error', function () { tried += 1; if (tried < srcs.length) { v.src = srcs[tried]; v.play().catch(function () {}); } });
       v.setAttribute('aria-label', card.getAttribute('data-caption') || 'Vídeo');
       card.appendChild(v);
       card.classList.add('is-playing');

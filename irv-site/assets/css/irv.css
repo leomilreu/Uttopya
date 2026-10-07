@@ -1362,3 +1362,37 @@ body.irv-site .raphael-copy h2 strong{font-family:'Red Hat Display',Arial,Helvet
 .jn-story__media.is-playing{cursor:default;background:#000}
 .jn-story__media video{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;background:#000;object-fit:contain}
 .jn-story__media.is-playing img,.jn-story__media.is-playing .jn-play{opacity:0;pointer-events:none}
+
+
+/* Números de impacto (Faça parte): fundo branco, números rosa grandes, como no Wix */
+body.irv-site .impact-wide--light{position:relative;overflow:hidden;background:#fff;color:var(--ink);border-bottom:1px solid #eef0f5}
+.impact-wide--light .eyebrow{color:var(--pink-bright)}
+.impact-wide--light h2{color:var(--ink);font-weight:800;letter-spacing:-1.2px}
+.impact-wide--light .impact-numbers{margin-top:36px;max-width:none}
+.impact-wide--light .impact-numbers>div,.impact-wide--light .impact-numbers>div:first-child,.impact-wide--light .impact-numbers>div:last-child{align-items:center;justify-content:flex-start;padding:10px 18px;border-right:1px solid #dfe4ec;text-align:center}
+.impact-wide--light .impact-numbers>div:last-child{border-right:0}
+.impact-wide--light .impact-numbers b{margin:0 0 14px;color:var(--pink-bright);font-size:84px;font-weight:900;line-height:.95;letter-spacing:-4px}
+.impact-wide--light .impact-numbers span{max-width:180px;color:#1d2230;font-size:17px;line-height:1.3}
+.impact-brush{position:absolute;right:-70px;bottom:-60px;z-index:0;width:260px;height:auto;pointer-events:none;opacity:.95;transform:rotate(-8deg)}
+.impact-wide--light .shell{position:relative;z-index:1}
+@media(max-width:900px){
+  .impact-wide--light .impact-numbers b{font-size:64px;letter-spacing:-3px}
+  .impact-wide--light .impact-numbers>div:nth-child(2){border-right:0}
+  .impact-wide--light .impact-numbers>div:nth-child(-n+2){border-bottom:1px solid #dfe4ec;padding-bottom:22px}
+  .impact-wide--light .impact-numbers>div:nth-child(n+3){padding-top:22px}
+  .impact-brush{width:170px;right:-50px;bottom:-40px}
+}
+@media(max-width:560px){
+  .impact-wide--light .impact-numbers b{font-size:52px}
+  .impact-wide--light .impact-numbers span{font-size:14.5px}
+  .impact-brush{width:120px}
+}
+
+/* Galeria sem legendas visíveis */
+.jn-tile::after{display:none}
+.jn-tile__cap{display:none}
+/* Números de impacto no celular: uma coluna, divisória só entre os itens */
+@media(max-width:560px){
+  .impact-wide--light .impact-numbers>div,.impact-wide--light .impact-numbers>div:nth-child(2),.impact-wide--light .impact-numbers>div:nth-child(-n+2),.impact-wide--light .impact-numbers>div:nth-child(n+3){border-right:0;border-bottom:1px solid #dfe4ec;padding:20px 0}
+  .impact-wide--light .impact-numbers>div:last-child{border-bottom:0}
+}

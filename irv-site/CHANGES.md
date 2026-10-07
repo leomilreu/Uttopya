@@ -81,3 +81,8 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 
 ## 0.16.3
 - Faça parte: o vídeo do depoimento toca dentro do próprio card, no lugar da foto, sem abrir janela (um vídeo por vez; ao terminar, volta a foto). Só ativa quando o MP4 existir em `assets/videos/`.
+
+## 0.16.4
+- Faça parte: o vídeo do depoimento abre dentro do próprio card; enquanto o MP4 nosso não existe em `assets/videos/`, toca a versão 720p (reserva 480p) direto do Wix.
+- Números de impacto no estilo do Wix: fundo branco, números rosa grandes, divisórias e pincel rosa no canto.
+- Galeria sem legendas visíveis (a descrição fica só como rótulo de acessibilidade).
