@@ -133,3 +133,6 @@ Obs.: os MP4 ficam apenas no servidor (não versionados).
 
 ## 0.27.0
 Quem somos: placa azul atrás da foto da Márcia agora cobre só a imagem; legenda fora, sobre fundo branco.
+
+## 0.28.0
+Quem somos: rótulo "História" passa para cima do título "Quem é Raphael Veiga" (desktop).
