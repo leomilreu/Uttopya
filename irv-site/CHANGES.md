@@ -108,3 +108,6 @@ WhatsApp flutuante no mobile: ao rolar até o rodapé, para acima da linha dos c
 
 ## 0.20.0
 Revisão mobile: ritmo de seções único (36 px) em todas as páginas, h1 34 px e h2 27 px padronizados, textos mínimos de 12 px, links do rodapé com área de toque maior.
+
+## 0.21.0
+Home mobile: herói passa a ter altura do conteúdo, sem vazio abaixo dos botões.

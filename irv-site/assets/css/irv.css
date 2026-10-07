@@ -1514,3 +1514,11 @@ body.irv-site .newsletter{padding-top:var(--sy);padding-bottom:var(--sy)}
 body.irv-site .wix-about-intro span,body.irv-site .wix-about-intro p span{font-size:12px}
 }
 @media(max-width:900px){body.irv-site.page-about .achievements header span{font-size:12px}}
+
+/* v0.20 mobile: remove o vazio abaixo dos botões do herói */
+@media(max-width:560px){
+body.irv-home .hero{background-size:cover;background-position:62% 30%}
+body.irv-home .hero::before{height:100%}
+body.irv-home .hero-inner{height:auto;padding-top:48px;padding-bottom:64px}
+body.irv-home .impact{margin-top:-32px}
+}
