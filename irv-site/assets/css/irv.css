@@ -1569,3 +1569,12 @@ body.irv-site .is-donate.button--light,body.irv-site .join-card--pink .is-donate
 body.irv-site .is-donate.button:hover,body.irv-site .is-donate.header-cta:hover{animation-play-state:paused;transform:translateY(-2px)}
 body.irv-site .is-donate.jn-way__link i{animation:irv-donate-nudge 1.8s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){body.irv-site .is-donate,body.irv-site .is-donate::after,body.irv-site .is-donate i{animation:none!important}}
+
+/* v0.31 sem elementos pincelados: seta, círculo da faixa da Início e borda rasgada do herói */
+body.irv-site .deco,body.irv-site .deco--arrow,body.irv-site .deco--brush{display:none!important}
+body.irv-site .movement{background-image:none!important;background-color:var(--pink)}
+body.irv-site .jn-hero::after{display:none}
+body.irv-site .jn-hero>img{object-position:70% 16%}
+
+/* v0.31 Início: colunas do "Quem somos" somavam 104% e vazavam ~15px em 1000–1100 px */
+@media(min-width:901px){body.irv-home .about{grid-template-columns:48% 40%;gap:12%}}

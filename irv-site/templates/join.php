@@ -70,7 +70,7 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 ?>
 <main id="conteudo">
 
-<section class="jn-hero"><img src="<?php echo $asset( 'assets/join/hero.webp' ); ?>" width="1600" height="900" decoding="async" fetchpriority="high" alt=""><div class="shell jn-hero__inner"><p class="jn-kicker">Faça parte</p><h1>Toda transformação <br>precisa de gente <br>que jogue junto</h1><a class="button button--pink" href="#doacao">Quero doar</a></div></section>
+<section class="jn-hero"><img src="<?php echo $asset( 'assets/join/hero.webp' ); ?>" width="1800" height="1200" decoding="async" fetchpriority="high" alt=""><div class="shell jn-hero__inner"><p class="jn-kicker">Faça parte</p><h1>Toda transformação <br>precisa de gente <br>que jogue junto</h1><a class="button button--pink" href="#doacao">Quero doar</a></div></section>
 
 <section class="jn-ways shell"><h2 class="jn-ways__title">Existem muitas formas de <em class="jn-em">fazer parte</em></h2><div class="jn-ways__grid"><?php foreach ( $ways as $way ) : ?><article class="jn-way<?php echo $way[5] ? ' jn-way--hl' : ''; ?>"><span class="jn-way__icon"><img src="<?php echo $wix( $way[4] ); ?>" width="84" height="84" loading="lazy" decoding="async" alt=""></span><h3><?php echo esc_html( $way[0] ); ?></h3><p><?php echo esc_html( $way[1] ); ?></p><a class="jn-way__link" href="<?php echo esc_url( $way[3] ); ?>"><?php echo esc_html( $way[2] ); ?> <i aria-hidden="true"></i></a></article><?php endforeach; ?></div></section>
 

@@ -47,7 +47,6 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 
 <div class="work-band">
 <section class="methodology shell">
-	<img class="deco deco--arrow" src="<?php echo $wix( 'e09d66_5725dcf6e841451b9c27e847a13ca8c1~mv2.png' ); ?>" width="140" height="210" loading="lazy" decoding="async" alt="">
 	<div class="methodology-head"><p class="eyebrow">Nossa metodologia</p><h2>Promovemos o desenvolvimento de <span class="brush">habilidades socioemocionais</span></h2></div>
 	<div class="methodology-copy"><p>A metodologia do <strong>Instituto Raphael Veiga</strong> é fundamentada no esporte educacional e no ballet educacional, ambos articulados aos princípios da educação integral.</p><p>As atividades são planejadas para ampliar a compreensão do esporte e da arte para além do senso comum, reconhecendo essas práticas em todo o seu potencial educativo, formativo e transformador.</p><p>As aulas combinam o desenvolvimento técnico e prático, por meio do ensino de fundamentos, regras, dinâmicas e esquemas de jogo, com o fortalecimento de habilidades socioemocionais. Ao longo das atividades, buscamos estimular competências como <strong>autoconhecimento</strong>, <strong>respeito</strong>, <strong>responsabilidade</strong>, <strong>cooperação</strong> e <strong>trabalho em equipe</strong>, essenciais para a formação integral de crianças e adolescentes.</p></div>
 </section>

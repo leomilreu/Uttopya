@@ -142,3 +142,8 @@ Botões de fundo transparente (ex.: "Apoie o IRV") ficam rosa ao passar o mouse.
 
 ## 0.30.0
 Botões de doação (cabeçalho, "Doe agora", "Quero doar", "Doar R$ X") com pulso suave e brilho; setas dos links respiram. Respeita prefers-reduced-motion.
+
+## 0.31.0
+Removidos os elementos pincelados: seta da metodologia (O que fazemos), círculo/pincelada da faixa "IRV é mais que movimento" (Início, agora rosa liso), borda rasgada e círculo rosa do herói da Faça parte (nova foto, sem círculo).
+
+Obs. 0.31.0: ícone do pilar Esportes com fundo branco (arquivo assets/wix/e09d66_5de483...png, só no servidor); colunas da seção "Quem somos" da Início ajustadas (sem vazamento em 1000–1100 px); hero da Faça parte sem círculo/borda rasgada.
