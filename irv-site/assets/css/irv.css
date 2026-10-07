@@ -1479,3 +1479,16 @@ body.irv-site .impact-wide--light{position:relative;overflow:hidden;background:#
 @keyframes irv-breathe{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.25);opacity:1}}
 @keyframes irv-btn-pulse{0%{box-shadow:0 0 0 0 #ffffff80}70%,100%{box-shadow:0 0 0 14px #ffffff00}}
 @media(prefers-reduced-motion:reduce){.join-card--pink::before,.join-card--pink::after,.join-card--pink .button{animation:none}.join-card--pink{transition:none}}
+
+
+/* Home: imagem principal em tamanhos menores para telas menores */
+@media(max-width:1280px){.hero{background-image:url('../images/hero-1280.avif')}}
+@media(max-width:800px){.hero{background-image:url('../images/hero-800.avif')}}
+
+/* Home: o mesmo espaço entre todas as seções (igual às demais páginas) */
+body.irv-home{--sy:56px}
+@media(max-width:900px){body.irv-home{--sy:44px}}
+@media(max-width:560px){body.irv-home{--sy:36px}}
+body.irv-home .about{padding-bottom:var(--sy)}
+body.irv-home .fronts,body.irv-home .voices,body.irv-home .join,body.irv-home .news{height:auto;padding-top:var(--sy);padding-bottom:var(--sy)}
+body.irv-home .newsletter{margin-top:0}
