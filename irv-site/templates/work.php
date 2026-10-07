@@ -41,7 +41,7 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 ?>
 <main id="conteudo">
 
-<section class="sports-hero"><h1 class="sr-only">O que fazemos</h1><img class="deco deco--brush" src="<?php echo $wix( 'e09d66_99566f94404a4aef9fbe32cdccf1d561~mv2.png' ); ?>" width="553" height="425" decoding="async" alt=""><img src="<?php echo $wix( 'e09d66_7df141dba9a945eeb011c0d044e3a113~mv2.jpg' ); ?>" width="1600" height="931" decoding="async" alt="Futebol, handebol, vôlei, basquete, ballet e festivais: uma menina em pé diante de um círculo rosa"></section>
+<section class="sports-hero"><h1 class="sr-only">O que fazemos</h1><img src="<?php echo $wix( 'e09d66_7df141dba9a945eeb011c0d044e3a113~mv2.jpg' ); ?>" width="1600" height="931" decoding="async" alt="Futebol, handebol, vôlei, basquete, ballet e festivais: uma menina em pé diante de um círculo rosa"></section>
 
 
 

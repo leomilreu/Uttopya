@@ -49,3 +49,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 
 ## 0.14.5
 - O que fazemos: espaço entre seções reduzido (56 px no desktop, 44 no tablet, 36 no celular), igual em todas. Ajuste pela variável `--sy` no CSS.
+
+## 0.14.6
+- O que fazemos: removida a pincelada rosa circular do canto do hero.
