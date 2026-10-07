@@ -60,3 +60,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 
 ## 0.15.1
 - Removido o "1 min de leitura" de todas as páginas (home, lista de notícias, destaque, cards, "Leia também" e página da notícia). `templates/home.php` agora também está no repositório.
+
+## 0.15.2
+- Home: o item "Notícias" do cabeçalho agora abre a página de notícias (antes rolava a página até a seção).

@@ -21,7 +21,7 @@ $home  = '1' === get_option( 'irv_standalone_mode', '0' ) ? home_url( '/' ) : ho
 		<a class="brand" href="<?php echo esc_url( $home ); ?>" aria-label="Instituto Raphael Veiga — início"><img src="<?php echo $asset( 'assets/images/logo.avif' ); ?>" width="264" height="64" alt="Instituto Raphael Veiga"></a>
 		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-irv">Menu</button>
 		<nav id="menu-irv" aria-label="Navegação principal">
-			<a aria-current="page" href="#inicio">Home</a><a href="<?php echo esc_url( home_url( '/quem-somos/' ) ); ?>">Quem somos</a><a href="<?php echo esc_url( home_url( '/o-que-fazemos/' ) ); ?>">O que fazemos</a><a href="#noticias">Notícias</a><a href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Faça parte</a>
+			<a aria-current="page" href="#inicio">Home</a><a href="<?php echo esc_url( home_url( '/quem-somos/' ) ); ?>">Quem somos</a><a href="<?php echo esc_url( home_url( '/o-que-fazemos/' ) ); ?>">O que fazemos</a><a href="<?php echo esc_url( home_url( '/noticias/' ) ); ?>">Notícias</a><a href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Faça parte</a>
 		</nav>
 		<a class="button button--pink header-cta" href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Doe agora</a>
 	</div>
