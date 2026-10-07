@@ -67,8 +67,6 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 
 <section class="believe"><div class="shell"><h2>Acredite no potencial. <br>Transforme o presente. <br>Construa futuros.</h2><p>Com a sua doação, mais crianças e jovens têm acesso à educação, ao esporte, à cultura e a um futuro com mais oportunidades.</p><a class="button button--pink" href="<?php echo esc_url( home_url( '/faca-parte/' ) ); ?>">Doe agora</a></div></section>
 
-<?php require IRV_SITE_DIR . 'templates/partials/newsletter.php'; ?>
-
 </main>
 <?php require IRV_SITE_DIR . 'templates/partials/footer.php'; ?>
 </body></html>

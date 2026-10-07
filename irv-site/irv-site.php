@@ -2,7 +2,7 @@
 /**
  * Plugin Name: IRV — Site Institucional
  * Description: Reconstrução independente do site do Instituto Raphael Veiga em /irv.
- * Version: 0.14.3
+ * Version: 0.14.4
  * Author: Uttopya
  */
 
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'IRV_SITE_VERSION', '0.14.3' );
+define( 'IRV_SITE_VERSION', '0.14.4' );
 define( 'IRV_SITE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'IRV_SITE_URL', plugin_dir_url( __FILE__ ) );
 require_once IRV_SITE_DIR . 'includes/blog-data.php';

@@ -43,3 +43,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 ## 0.14.3
 - Nosso impacto: as quatro linhas têm sempre a mesma altura (a da maior), em qualquer tela.
 - O que fazemos: o mesmo espaço (88 px no desktop, 64 no tablet, 52 no celular) em cima e embaixo de todas as seções.
+
+## 0.14.4
+- O que fazemos: removida a faixa "Fique por dentro" acima do rodapé (o Wix também não a tem nesta página) e a faixa de doação voltou a ser azul, com botão rosa.

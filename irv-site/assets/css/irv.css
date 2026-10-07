@@ -1052,3 +1052,7 @@ body.irv-site :where(a,span,strong,em){line-height:inherit}
 .page-work .impact-band{padding-block:var(--sy)}
 .page-work .participant-voices{padding-block:var(--sy)}
 .page-work .believe{padding-block:var(--sy)}
+
+/* O que fazemos: faixa de doação em azul (sem a newsletter antes do rodapé) */
+.page-work .believe{background:var(--blue)}
+.page-work .believe .button{background:var(--pink);color:#fff}
