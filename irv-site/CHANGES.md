@@ -114,3 +114,6 @@ Home mobile: herói passa a ter altura do conteúdo, sem vazio abaixo dos botõe
 
 ## 0.22.0
 Post: título ocupa toda a largura do conteúdo; autor removido (fica só a data).
+
+## 0.23.0
+Post: topo com link "Voltar às notícias" e seta à esquerda no lugar do caminho Notícias/Categoria.

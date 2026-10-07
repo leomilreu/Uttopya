@@ -1527,3 +1527,5 @@ body.irv-home .impact{margin-top:-32px}
 body.irv-post .pt-head{max-width:none}
 body.irv-post .pt-head h1{max-width:none;text-wrap:pretty}
 body.irv-post .pt-meta{margin-top:20px}
+body.irv-post .pt-back{display:inline-flex;align-items:center;gap:8px;padding:6px 0;font-size:14px;font-weight:800;transition:gap .2s}
+body.irv-post .pt-back:hover{gap:12px;text-decoration:none}

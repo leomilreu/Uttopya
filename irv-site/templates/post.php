@@ -84,7 +84,7 @@ require IRV_SITE_DIR . 'templates/partials/header.php';
 <main id="conteudo" class="pt">
 
 <header class="pt-head shell">
-	<nav class="pt-crumbs" aria-label="Você está em"><a href="<?php echo esc_url( home_url( '/noticias/' ) ); ?>">Notícias</a><?php if ( $post['cats'] ) : ?><span aria-hidden="true">/</span><a href="<?php echo esc_url( home_url( '/noticias/categoria/' . $post['cats'][0] . '/' ) ); ?>"><?php echo esc_html( ucfirst( mb_strtolower( $categories[ $post['cats'][0] ] ) ) ); ?></a><?php endif; ?></nav>
+	<nav class="pt-crumbs" aria-label="Navegação"><a class="pt-back" href="<?php echo esc_url( home_url( '/noticias/' ) ); ?>"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Voltar às notícias</a></nav>
 	<?php if ( $post['cats'] ) : ?><div class="nw-tags"><?php foreach ( $post['cats'] as $irv_cat ) : ?><a href="<?php echo esc_url( home_url( '/noticias/categoria/' . $irv_cat . '/' ) ); ?>"><?php echo esc_html( $categories[ $irv_cat ] ); ?></a><?php endforeach; ?></div><?php endif; ?>
 	<h1><?php echo esc_html( $post['title'] ); ?></h1>
 	<?php if ( $found ) : ?><p class="pt-meta"><time><?php echo esc_html( $post['date'] ); ?></time></p><?php endif; ?>
