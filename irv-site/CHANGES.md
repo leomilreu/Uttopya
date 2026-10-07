@@ -105,3 +105,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 
 ## 0.19.0
 WhatsApp flutuante no mobile: ao rolar até o rodapé, para acima da linha dos créditos (JS `--wa-lift` + CSS).
+
+## 0.20.0
+Revisão mobile: ritmo de seções único (36 px) em todas as páginas, h1 34 px e h2 27 px padronizados, textos mínimos de 12 px, links do rodapé com área de toque maior.

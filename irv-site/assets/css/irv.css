@@ -1495,3 +1495,22 @@ body.irv-home .newsletter{margin-top:0}
 
 /* v0.19 WhatsApp acima da linha dos créditos (mobile) */
 @media(max-width:900px){body.irv-site .whatsapp-float{bottom:calc(16px + var(--wa-lift,0px) + env(safe-area-inset-bottom));margin-bottom:12px}}
+
+/* v0.19 padronização mobile: ritmo, tipografia, textos mínimos e áreas de toque */
+@media(max-width:900px){
+body.irv-site{--sy:36px}
+body.irv-site .wix-about-intro,body.irv-site .irv-triad,body.irv-site .timeline,body.irv-site .origin,body.irv-site .achievements,body.irv-site .irv-history,body.irv-site .territory,body.irv-site .partners,body.irv-site .team,body.irv-site .documents,body.irv-site .jn-gallery,body.irv-site .post-related{padding-top:var(--sy);padding-bottom:var(--sy)}
+body.irv-site .nw-head{padding-top:var(--sy);padding-bottom:20px}
+body.irv-site .nw-list{padding-top:0;padding-bottom:var(--sy)}
+body.irv-site .pt-layout{padding-bottom:var(--sy)}
+body.irv-site main h2:not(.impact-eyebrow):not(.sr-only){font-size:27px;line-height:1.1}
+body.irv-inner main h1:not(.sr-only){font-size:34px;line-height:1.05}
+body.irv-site .voice p,body.irv-site .voice strong,body.irv-site .news-category,body.irv-site .about-nav a,body.irv-site .nw-tags a,body.irv-site .pt-share span,body.irv-site .about-nav span,body.irv-site .footer-bottom,body.irv-site .footer-signature,body.irv-site .footer-signature span{font-size:12px}
+body.irv-site .footer-grid a{display:block;padding:7px 0}
+}
+@media(max-width:900px){
+body.irv-post main h1:not(.sr-only){font-size:34px;line-height:1.05}
+body.irv-site .newsletter{padding-top:var(--sy);padding-bottom:var(--sy)}
+body.irv-site .wix-about-intro span,body.irv-site .wix-about-intro p span{font-size:12px}
+}
+@media(max-width:900px){body.irv-site.page-about .achievements header span{font-size:12px}}
