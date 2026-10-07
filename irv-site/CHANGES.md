@@ -28,3 +28,10 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 - `irv-site.php`: cada rota carrega o seu template; `page.php` deixou de ser usado (fica no plugin como reserva).
 - CSS (bloco v0.13): números de impacto sem sobreposição, hero de O que fazemos com a arte pronta, fotos das notícias sem esticar, formulário de doação sem linha cortando os títulos, textos de notícia e privacidade alinhados à esquerda.
 - O `post.php` antigo foi substituído; o `page.php` antigo continua no servidor.
+
+## 0.14.0 — O que fazemos no estilo do Wix + movimento
+- Hero com a arte dentro do limite de largura da home, pincel rosa no canto e faixa cinza de topo inclinado logo abaixo (as pernas da menina terminam na diagonal, como no Wix).
+- Metodologia com o texto completo, "habilidades socioemocionais" em azul, palavras-chave em negrito e setinha desenhada.
+- Pilares: card branco, foto com ícone redondo, botão "Saiba mais" que abre o texto longo (acordeão acessível, um aberto por vez).
+- Impacto: cards 01–04 com a foto inteira (sem cortar as pernas). O bloco azul de números (188/300/350/2200) deixou de aparecer nesta página, pois não existe no Wix.
+- Movimento (todas as páginas internas): entrada ao rolar em cascata, números que contam (Faça parte), hover nos cards. Desligado em "reduzir movimento" e sem JavaScript tudo continua visível.

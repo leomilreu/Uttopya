@@ -794,3 +794,171 @@ body.irv-site :where(a,span,strong,em){line-height:inherit}
 @media(max-width:900px){
   .impact-numbers>div:nth-child(odd){padding-left:0}
 }
+
+/* ==========================================================================
+   v0.14 — O que fazemos: layout do Wix + movimento (todas as páginas internas)
+   ========================================================================== */
+
+/* ---- Hero: arte em largura quase total, como no Wix ---- */
+.page-work .sports-hero{padding:8px 0 0;background:#fff;overflow:hidden}
+.page-work .sports-hero img{width:min(100%,1500px);max-height:none}
+@keyframes irv-hero-in{from{opacity:0;transform:scale(1.04) translateY(14px)}to{opacity:1;transform:none}}
+.js .page-work .sports-hero img{animation:irv-hero-in .9s cubic-bezier(.2,.7,.2,1) both}
+
+/* ---- Faixa de esportes em movimento ---- */
+.sports-marquee{overflow:hidden;background:var(--pink);color:#fff;padding:16px 0;border-block:1px solid #ffffff22}
+.sports-marquee__track{display:flex;align-items:center;gap:34px;width:max-content;animation:irv-marquee 38s linear infinite}
+.sports-marquee span{font-size:34px;font-weight:900;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
+.sports-marquee span:nth-of-type(even){color:transparent;-webkit-text-stroke:1.5px #fff}
+.sports-marquee i{flex:0 0 14px;height:14px;border-radius:50%;background:#fff}
+.sports-marquee:hover .sports-marquee__track{animation-play-state:paused}
+@keyframes irv-marquee{to{transform:translateX(-50%)}}
+
+/* ---- Metodologia: título à esquerda, texto à direita, detalhes desenhados ---- */
+.page-work .methodology{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start}
+.page-work .methodology-head h2{margin:14px 0 0;font-size:42px;line-height:1.06;letter-spacing:-1.4px}
+.page-work .methodology-copy p{margin:0 0 20px;font-size:17px;line-height:1.7;color:#2d3340}
+.page-work .methodology-copy p:first-child{font-size:20px;line-height:1.55;color:var(--ink);font-weight:500}
+.brush{position:relative;display:inline;color:var(--pink);background:linear-gradient(transparent 68%,#ff206e2b 68%)}
+.deco{position:absolute;pointer-events:none;height:auto}
+.deco--arrow{right:-10px;top:30px;width:92px;opacity:.9;transform-origin:20% 90%;animation:irv-float 4.6s ease-in-out infinite}
+@keyframes irv-float{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(8px,-10px) rotate(4deg)}}
+
+/* ---- Pilares: foto no alto, painel cinza com ícone, título e "Saiba mais" ---- */
+.pillars .pillar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:start}
+.pillars .pillar-grid .pillar{display:flex;flex-direction:column;justify-content:flex-start;min-height:0;padding:0;overflow:hidden;color:var(--ink);background:#e9edf3;border-radius:16px;box-shadow:0 12px 30px #17213a0f;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.pillars .pillar-grid .pillar:hover{transform:translateY(-6px);box-shadow:0 22px 44px #17213a1f}
+.pillar-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#d5dbe4}
+.pillar-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.pillar:hover .pillar-media img{transform:scale(1.07)}
+.pillar-body{position:relative;padding:34px 22px 22px}
+.pillar-icon{position:absolute;left:22px;top:-28px;width:56px;height:56px;border-radius:50%;box-shadow:0 8px 18px #17213a2e;transition:transform .35s ease}
+.pillar:hover .pillar-icon{transform:rotate(-8deg) scale(1.08)}
+.pillars .pillar h3{margin:0 0 10px;font-size:18px;line-height:1.1;letter-spacing:.04em;text-transform:uppercase}
+.pillars .pillar p{margin:0;color:#3f4654;font-size:14px;line-height:1.55}
+.pillar-more{display:none;margin-top:16px;padding:0;border:0;background:none;color:var(--blue);font:inherit;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;align-items:center;gap:8px}
+.js .pillar-more{display:inline-flex}
+.pillar-more i{width:20px;height:20px;border-radius:50%;background:var(--blue);position:relative;transition:transform .35s ease,background .2s ease}
+.pillar-more i::before,.pillar-more i::after{content:'';position:absolute;left:50%;top:50%;width:8px;height:2px;margin:-1px 0 0 -4px;background:#fff;border-radius:2px;transition:transform .35s ease}
+.pillar-more i::after{transform:rotate(90deg)}
+.pillar-more[aria-expanded="true"] i{transform:rotate(180deg);background:var(--pink)}
+.pillar-more[aria-expanded="true"] i::after{transform:rotate(0)}
+.pillar-more:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:4px}
+.pillar-extra{display:grid;grid-template-rows:1fr;margin-top:14px;padding-top:14px;border-top:1px solid #cfd6e0}
+.pillar-extra>div{overflow:hidden}
+.pillars .pillar-extra p{font-size:13.5px}
+.js .pillar-extra{grid-template-rows:0fr;margin-top:0;padding-top:0;border-top:0;visibility:hidden;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1),margin .45s,padding .45s,visibility 0s .45s}
+.js .pillar-more[aria-expanded="true"]+.pillar-extra{grid-template-rows:1fr;margin-top:14px;padding-top:14px;border-top:1px solid #cfd6e0;visibility:visible;transition-delay:0s}
+
+/* ---- Impacto: título + cards com a foto inteira (sem cortar pessoas) ---- */
+.page-work .work-impact{display:block;padding:40px 0 90px}
+.work-impact__head{margin-bottom:34px}
+.work-impact__head h2{margin:10px 0 0;font-size:38px;line-height:1.05;letter-spacing:-1px}
+.impact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.page-work .impact-card{display:flex;flex-direction:column;overflow:hidden;background:#eef1f6;border-radius:18px;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+.page-work .impact-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px #17213a1c}
+.impact-card__text{padding:26px 28px 22px}
+.impact-card__text b{display:block;font-size:44px;line-height:1;color:var(--pink);letter-spacing:-1px}
+.impact-card__text h3{margin:12px 0 8px;font-size:18px;letter-spacing:.05em;text-transform:uppercase}
+.impact-card__text p{margin:0;max-width:520px;font-size:15px;line-height:1.55;color:#3f4654}
+.impact-card__media{margin-top:auto;aspect-ratio:2/1;overflow:hidden;background:#d5dbe4}
+.impact-card__media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.impact-card:hover .impact-card__media img{transform:scale(1.06)}
+
+/* ---- Entrada ao rolar (só com JavaScript e sem "reduzir movimento") ---- */
+@media(prefers-reduced-motion:no-preference){
+  .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+  .js .reveal.is-in{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .sports-marquee__track,.deco--arrow,.js .page-work .sports-hero img{animation:none}
+  .pillar,.pillar-media img,.impact-card,.impact-card__media img{transition:none}
+}
+
+/* ---- Responsivo ---- */
+@media(max-width:1100px){
+  .pillars .pillar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .page-work .methodology{grid-template-columns:1fr;gap:26px;padding:56px 0 56px}
+  .page-work .methodology-head h2{font-size:34px}
+  .deco--arrow{width:64px;top:6px;right:0}
+  .impact-grid{grid-template-columns:1fr}
+  .sports-marquee span{font-size:26px}
+}
+@media(max-width:560px){
+  .pillars .pillar-grid{grid-template-columns:1fr;gap:34px}
+  .page-work .methodology-head h2{font-size:30px}
+  .page-work .methodology-copy p:first-child{font-size:18px}
+  .work-impact__head h2{font-size:30px}
+  .impact-card__text{padding:22px 20px 18px}
+  .impact-card__text b{font-size:36px}
+  .sports-marquee{padding:12px 0}
+  .sports-marquee span{font-size:22px}
+  .sports-marquee__track{gap:22px}
+}
+
+/* ---- Ajustes conforme o Wix (conteúdo sempre dentro do limite --shell da home) ---- */
+.page-work .sports-hero{position:relative;width:min(var(--shell),calc(100% - 48px));margin-inline:auto;padding:8px 0 0;overflow:visible}
+.page-work .sports-hero img:not(.deco){position:relative;z-index:1;display:block;width:100%;height:auto;margin:0}
+.deco--brush{right:-14px;top:-8px;width:min(24%,230px);opacity:.95;z-index:0;animation:irv-float 7s ease-in-out infinite}
+
+/* Faixa cinza com o topo inclinado (metodologia + pilares) */
+.work-band{background:#f4f5fa;clip-path:polygon(0 38px,100% 0,100% 100%,0 100%);margin-top:-38px;padding-top:38px}
+.page-work .work-band .methodology{padding:96px 0 70px;background:none}
+.page-work .work-band .pillars{padding:10px 0 96px}
+.page-work .methodology-head h2{font-weight:900}
+.brush{color:var(--blue);background:none}
+.page-work .methodology-copy p strong{font-weight:800;color:var(--ink)}
+.deco--arrow{right:auto;left:45%;top:auto;bottom:78px;width:84px}
+.pillars{text-align:center}
+.pillars .pillar{text-align:left}
+
+/* Pilares como no Wix: card branco, ícone sobre a foto, botão em largura total */
+.pillars .pillar-grid .pillar{background:#fff;border-radius:14px}
+.pillar-media{aspect-ratio:306/217}
+.pillar-icon{left:16px;top:auto;bottom:14px;width:52px;height:52px;z-index:2}
+.pillar-body{padding:22px 20px 20px}
+.pillars .pillar h3{font-size:19px;letter-spacing:.01em;text-transform:uppercase}
+.pillars .pillar p{font-size:15px;color:#2d3340}
+.pillar-more{width:100%;margin-top:18px;padding:12px 16px;border-radius:8px;background:var(--pink);color:#fff;letter-spacing:.05em;justify-content:space-between;transition:background .25s ease}
+.js .pillar-more{display:flex}
+.pillar-more:hover{background:#c2204f}
+.pillar-more[aria-expanded="true"]{background:var(--blue)}
+.pillar-more i{width:16px;height:16px;background:none;transform:none}
+.pillar-more i::before,.pillar-more i::after{width:14px;margin:-1px 0 0 -7px}
+.pillar-more[aria-expanded="true"] i{transform:none;background:none}
+.pillar-more:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+@media(max-width:900px){
+  .deco--brush{width:150px;right:-8px;top:-4px}
+  .work-band{clip-path:polygon(0 22px,100% 0,100% 100%,0 100%);margin-top:-22px;padding-top:22px}
+  .page-work .work-band .methodology{padding:64px 0 36px}
+  .page-work .work-band .pillars{padding-bottom:64px}
+  .deco--arrow{display:none}
+}
+.page-work .sports-hero img:not(.deco){left:auto;top:auto;bottom:auto;right:auto;transform:none;border-radius:0;object-fit:contain}
+.page-work .methodology img.deco--arrow{width:84px;height:auto;object-fit:contain}
+@media(max-width:900px){.page-work .methodology img.deco--arrow{display:none}}
+.page-work .sports-hero img.deco--brush{position:absolute;display:block;right:-14px;top:-8px;left:auto;bottom:auto;width:min(24%,230px);height:auto;z-index:0;transform:none}
+@media(max-width:900px){.page-work .sports-hero img.deco--brush{width:150px;right:-8px;top:-4px}}
+
+/* ---- Correções finais de O que fazemos ---- */
+/* arte do hero se funde ao cinza da faixa (as pernas terminam na diagonal, como no Wix) */
+.page-work .sports-hero img:not(.deco){mix-blend-mode:multiply}
+.page-work .sports-hero img.deco--brush{z-index:2;mix-blend-mode:normal;top:10px}
+.page-work .work-band{position:relative;z-index:0}
+.page-work .methodology img.deco--arrow{left:39%;bottom:120px}
+/* ícone dos pilares: tamanho próprio (a regra da foto não vale para ele) */
+.pillar-media img.pillar-icon{position:absolute;left:16px;bottom:14px;width:52px;height:52px;object-fit:contain;border-radius:50%}
+.pillar:hover .pillar-media img.pillar-icon{transform:rotate(-8deg) scale(1.08)}
+/* cards de impacto: sem os recuos da regra antiga */
+.page-work .work-impact h2.x,.work-impact__head{padding:0}
+.work-impact .work-impact__head h2{padding:0;text-transform:none;margin:10px 0 0}
+.work-impact .impact-card__text b{padding:0}
+.work-impact .impact-card__text h3{padding:0;margin:12px 0 8px}
+.work-impact .impact-card__text p{padding:0;grid-column:auto}
+.work-impact .impact-card__media img{grid-column:auto;height:100%}
+@media(max-width:900px){.page-work .methodology img.deco--arrow{display:none}}
+.work-impact .work-impact__head .eyebrow{padding:0}
+@media(max-width:900px){.page-work .sports-hero img.deco--brush{width:104px;right:-2px;top:2px}}
