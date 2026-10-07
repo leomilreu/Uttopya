@@ -1582,3 +1582,9 @@ body.irv-site .jn-hero>img{object-position:70% 16%}
 /* v0.32 O que fazemos: seção "Nossos pilares" com fundo próprio (cards voltam a ser brancos) */
 body.page-work .pillars{position:relative;background:#e4edff;box-shadow:0 0 0 100vmax #e4edff;clip-path:inset(0 -100vmax);padding-top:56px;padding-bottom:56px;margin-bottom:0}
 @media(max-width:900px){body.page-work .pillars{padding-top:40px;padding-bottom:40px}}
+
+/* v0.33 Início (desktop): o banner ocupa a altura da tela abaixo do cabeçalho; a faixa de números fica visível na dobra */
+@media(min-width:901px){
+body.irv-home .hero{height:clamp(540px,calc(100svh - 95px - 76px),860px)}
+body.irv-home .hero-inner{height:100%;align-items:center;padding-top:0;padding-bottom:30px}
+}

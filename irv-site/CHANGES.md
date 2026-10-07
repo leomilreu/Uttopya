@@ -150,3 +150,6 @@ Obs. 0.31.0: ícone do pilar Esportes com fundo branco (arquivo assets/wix/e09d6
 
 ## 0.32.0
 O que fazemos: seção "Nossos pilares" com fundo azul-claro próprio (faixa inteira).
+
+## 0.33.0
+Início (desktop): banner com altura da tela (menos cabeçalho), sem faixa sobrando; números visíveis ao abrir.
