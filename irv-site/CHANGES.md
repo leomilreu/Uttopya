@@ -39,3 +39,7 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 ## 0.14.2 — Participantes e Nosso impacto (O que fazemos)
 - Participantes: cards de retrato com a frase sobre a foto e etiqueta de nome e idade; no celular viram carrossel de deslizar. Fotos otimizadas em WebP (`assets/voices/`, 25–58 KB em vez de 4–5 MB).
 - Nosso impacto: lista no estilo do Wix (numeral azul em degradê, fio com ponto rosa, foto de corte inclinado em fundo cinza), com hover e entrada em cascata.
+
+## 0.14.3
+- Nosso impacto: as quatro linhas têm sempre a mesma altura (a da maior), em qualquer tela.
+- O que fazemos: o mesmo espaço (88 px no desktop, 64 no tablet, 52 no celular) em cima e embaixo de todas as seções.
