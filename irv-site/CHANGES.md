@@ -63,3 +63,10 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 
 ## 0.15.2
 - Home: o item "Notícias" do cabeçalho agora abre a página de notícias (antes rolava a página até a seção).
+
+## 0.16.0 — Faça parte
+- Hero em tela cheia com borda rasgada; "Existem muitas formas de *fazer parte*" com a letra manuscrita do Wix; 3 cartões com os ícones do Wix (doação, parcerias, materiais). O cartão "Seja voluntário" foi excluído.
+- Doação interativa: frequência (1 vez/mensal), valores e "Outro"; o botão mostra "Doar R$ X" e abre um e-mail com o valor escolhido (o pagamento ainda não está conectado).
+- Depoimentos: cards com pôster; tocam vídeo ao clicar quando o arquivo MP4 existir em `assets/videos/` (`depoimento-paulo.mp4`, `depoimento-ludmila.mp4`, `depoimento-clarissa.mp4`).
+- Galeria em mosaico com visualizador de foto e vídeo (`assets/gallery/`, itens listados em `templates/join.php`).
+- Entrada ao rolar, valores contando e hover nos cards.

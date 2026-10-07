@@ -67,11 +67,11 @@
   // Entrada suave ao rolar, com pequeno atraso entre irmãos (efeito cascata).
   const targets = document.querySelectorAll([
     'main .eyebrow', 'main section h2', 'main .methodology-copy p', 'main .pillar',
-    'main .impact-row', 'main .voice-card', 'main .join-ways article',
-    'main .video-stories article', 'main .nw-feature', 'main .nw-card', 'main .team-grid article',
+    'main .impact-row', 'main .voice-card', 'main .jn-way', 'main .jn-tile', 'main .jn-donate__photo', 'main .jn-form',
+    'main .jn-story', 'main .nw-feature', 'main .nw-card', 'main .team-grid article',
     'main .documents article', 'main .partner-grid li', 'main .achievements__grid article',
     'main .timeline article', 'main .history-years article', 'main .irv-triad article',
-    'main .believe p', 'main .believe .button', 'main .donation > .shell > *',
+    'main .believe p', 'main .believe .button', 
     'main .origin-card', 'main .origin-story', 'main .post-related article'
   ].join(','));
   const seen = new Map();
@@ -108,5 +108,65 @@
       })(start);
     }, { threshold: 0.6 });
     co.observe(el);
+  });
+})();
+
+/* ==========================================================================
+   Faça parte: valor da doação e visualizador de foto e vídeo
+   ========================================================================== */
+(function () {
+  const form = document.querySelector('[data-donate]');
+  if (form) {
+    const btn = form.querySelector('[data-donate-btn]');
+    const other = form.querySelector('.jn-other');
+    const otherInput = other && other.querySelector('input');
+    const mail = 'mailto:atendimento@institutoraphaelveiga.org.br';
+    const update = function () {
+      const freq = form.querySelector('[name=frequency]:checked');
+      const amt = form.querySelector('[name=amount]:checked');
+      const isOther = amt && amt.value === 'other';
+      if (other) other.hidden = !isOther;
+      const value = isOther ? parseInt(otherInput && otherInput.value, 10) : parseInt(amt && amt.value, 10);
+      const ok = value > 0;
+      btn.textContent = ok ? 'Doar R$ ' + value + (freq && freq.value === 'mensal' ? ' por mês' : '') : 'Doar';
+      const subject = ok ? 'Quero doar R$ ' + value + ' (' + (freq ? freq.value : '1 vez') + ')' : 'Quero doar';
+      btn.setAttribute('href', mail + '?subject=' + encodeURIComponent(subject));
+    };
+    form.addEventListener('change', update);
+    form.addEventListener('input', update);
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    update();
+  }
+
+  const viewer = document.getElementById('jn-viewer');
+  if (!viewer || typeof viewer.showModal !== 'function') return;
+  const stage = viewer.querySelector('.jn-viewer__stage');
+  const cap = viewer.querySelector('.jn-viewer__cap');
+  const close = function () { viewer.close(); };
+  document.querySelectorAll('[data-viewer]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      const type = el.getAttribute('data-type');
+      const src = el.getAttribute('data-src');
+      stage.innerHTML = '';
+      let node;
+      if (type === 'video') {
+        node = document.createElement('video');
+        node.controls = true; node.autoplay = true; node.playsInline = true;
+        node.src = src;
+      } else {
+        node = document.createElement('img');
+        node.src = src; node.alt = el.getAttribute('data-caption') || '';
+      }
+      stage.appendChild(node);
+      cap.textContent = el.getAttribute('data-caption') || '';
+      document.body.classList.add('has-viewer');
+      viewer.showModal();
+    });
+  });
+  viewer.querySelector('[data-viewer-close]').addEventListener('click', close);
+  viewer.addEventListener('click', function (e) { if (e.target === viewer) close(); });
+  viewer.addEventListener('close', function () {
+    stage.innerHTML = '';
+    document.body.classList.remove('has-viewer');
   });
 })();
