@@ -1468,3 +1468,14 @@ body.irv-site .impact-wide--light{position:relative;overflow:hidden;background:#
 /* Quem somos: pontos da linha do tempo centralizados nos cards (2022 marca o começo) */
 .page-about .history-years article:not(:first-child)::before{left:50%;margin-left:-11px}
 .page-about .history-years::before{left:22px}
+
+/* Home: card "Doe para o IRV" com brilho que atravessa o card e botão pulsando */
+.join-card--pink{position:relative;overflow:hidden;isolation:isolate;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease}
+.join-card--pink:hover{transform:translateY(-6px);box-shadow:0 22px 44px #dc2e5f44}
+.join-card--pink::before{content:'';position:absolute;top:-20%;bottom:-20%;left:-60%;z-index:-1;width:40%;background:linear-gradient(100deg,transparent,#ffffff2e 50%,transparent);transform:skewX(-18deg);animation:irv-sheen 5.5s ease-in-out 1.2s infinite}
+.join-card--pink::after{content:'';position:absolute;right:-60px;bottom:-60px;z-index:-1;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#ffffff26,transparent 68%);animation:irv-breathe 4.5s ease-in-out infinite}
+.join-card--pink .button{animation:irv-btn-pulse 2.6s ease-out 1.6s infinite}
+@keyframes irv-sheen{0%{left:-60%}55%,100%{left:130%}}
+@keyframes irv-breathe{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.25);opacity:1}}
+@keyframes irv-btn-pulse{0%{box-shadow:0 0 0 0 #ffffff80}70%,100%{box-shadow:0 0 0 14px #ffffff00}}
+@media(prefers-reduced-motion:reduce){.join-card--pink::before,.join-card--pink::after,.join-card--pink .button{animation:none}.join-card--pink{transition:none}}

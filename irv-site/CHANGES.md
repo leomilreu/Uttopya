@@ -94,3 +94,6 @@ acrescente uma linha: sem arquivo, a vaga aparece reservada (tracejada).
 - Quem somos: pontos da linha do tempo centralizados nos cards (2022 marca o começo).
 - Home: imagens abaixo da dobra com carregamento preguiçoso, entrada suave ao rolar e números do topo que contam (respeita "reduzir movimento").
 - Removida a pincelada rosa da seção de números (Faça parte).
+
+## 0.17.1
+- Home: o card "Doe para o IRV" ganhou um brilho que atravessa o card a cada poucos segundos, um halo respirando no canto e o botão "Doe agora" pulsando; sobe levemente ao passar o mouse. Desligado em "reduzir movimento".
