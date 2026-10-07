@@ -120,3 +120,6 @@ Post: topo com link "Voltar às notícias" e seta à esquerda no lugar do caminh
 
 ## 0.24.0
 Rodapé: "UM PROJETO TOMATO + UTTOPYA" com link individual em cada nome; no celular os créditos ficam em duas linhas.
+
+## 0.25.0
+Rodapé: créditos com mais peso de fonte (600; nomes em 800).
