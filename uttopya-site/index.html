@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uttopya — Estúdio Editorial</title>
+<meta name="description" content="Uttopya, estúdio editorial.">
+<meta name="theme-color" content="#faf8f4">
+<meta property="og:title" content="Uttopya">
+<meta property="og:description" content="Estúdio editorial.">
+<meta property="og:url" content="https://uttopya.com.br/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23fa671e'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='22' font-weight='700' text-anchor='middle' fill='%23faf8f4'%3Eu%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #faf8f4;
+  --orange: #fa671e;
+  --logo: clamp(260px, 46vw, 680px);
+}
+@media (max-width: 600px) {
+  :root { --logo: 78vw; }
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--logo) * 0.07);
+  padding: 0 16px;
+  background: var(--bg);
+  color: var(--orange);
+}
+h1 { margin: 0; line-height: 0; }
+h1 img { display: block; width: var(--logo); height: auto; }
+nav { display: flex; gap: 4px; }
+nav a {
+  --size: max(36px, calc(var(--logo) * 0.078));
+  display: grid;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--bg);
+  transition: transform .15s ease, opacity .15s ease;
+}
+nav a:hover { transform: translateY(-2px); opacity: .88; }
+nav a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+nav svg { width: 50%; height: 50%; fill: currentColor; }
+@media (prefers-reduced-motion: reduce) {
+  nav a { transition: none; }
+}
+</style>
+</head>
+<body>
+<main>
+  <h1><img src="assets/logo.svg" alt="uttopya" width="3668" height="1000"></h1>
+</main>
+<nav aria-label="Contato e redes sociais">
+  <a href="https://www.instagram.com/uttopya" target="_blank" rel="noopener" aria-label="Instagram da Uttopya">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.4A4.6 4.6 0 1 0 12 16.6 4.6 4.6 0 0 0 12 7.4Zm0 7.6a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm5.9-7.8a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21 8.3c-.1-1.5-.4-2.8-1.5-3.8S17.2 3.1 15.7 3C14.1 2.9 9.9 2.9 8.3 3 6.8 3.100 5.500 3.400 4.500 4.500S3.100 6.800 3 8.300c-.1 1.600-.1 5.800 0 7.400.1 1.500.4 2.800 1.500 3.800s2.300 1.400 3.800 1.500c1.600.1 5.800.1 7.400 0 1.500-.1 2.800-.4 3.800-1.500s1.400-2.300 1.500-3.800c.1-1.600.1-5.800 0-7.400Zm-2 9.100a3 3 0 0 1-1.700 1.700c-1.200.5-4.100.4-5.300.4s-4.100.1-5.300-.4A3 3 0 0 1 5 17.400c-.5-1.200-.4-4.100-.4-5.400s-.1-4.100.4-5.300A3 3 0 0 1 6.700 5c1.200-.5 4.100-.4 5.300-.4s4.100-.1 5.300.4A3 3 0 0 1 19 6.700c.5 1.200.4 4.100.4 5.300s.1 4.100-.4 5.400Z"/></svg>
+  </a>
+  <a href="https://www.linkedin.com/company/uttopya" target="_blank" rel="noopener" aria-label="LinkedIn da Uttopya">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 2H3.6A1.600 1.600 0 0 0 2 3.600v16.800A1.600 1.600 0 0 0 3.600 22h16.800a1.600 1.600 0 0 0 1.600-1.600V3.600A1.600 1.600 0 0 0 20.400 2ZM8.100 19H5.100V9.500h3V19ZM6.600 8.200a1.700 1.700 0 1 1 0-3.500 1.700 1.700 0 0 1 0 3.500ZM19 19h-3v-4.600c0-1.100 0-2.500-1.500-2.500s-1.800 1.200-1.800 2.400V19h-3V9.500h2.800v1.300c.4-.8 1.400-1.500 2.800-1.500 3 0 3.600 2 3.600 4.600V19Z"/></svg>
+  </a>
+  <a href="mailto:contato@uttopya.com.br" aria-label="Enviar e-mail para contato@uttopya.com.br">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v.4l-10 6.200L2 6.400V6a1 1 0 0 1 1-1Zm19 3.700V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8.700l9.500 5.900a1 1 0 0 0 1 0L22 8.700Z"/></svg>
+  </a>
+</nav>
+</body>
+</html>
