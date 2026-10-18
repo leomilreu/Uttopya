@@ -1,11 +1,3 @@
-# Uttopya — site estático (sem WordPress)
+# Uttopya — página inicial estática
+# (o redirecionamento de /irv é feito pelo painel da Hostinger, em Redirecionamentos)
 DirectoryIndex index.html
-
-# /irv aponta para o site do Instituto Raphael Veiga
-Redirect 302 /irv https://orangered-woodcock-265125.hostingersite.com/
-
-# Cabeçalhos básicos
-<IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
-</IfModule>
