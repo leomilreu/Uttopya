@@ -13,9 +13,18 @@ Hospedagem: Hostinger, usuário `u887555276`, raiz `/home/u887555276/domains/utt
 - O WordPress ainda está no servidor, e `/manifesto/` ainda funciona por ele.
 - Se a página antiga continuar aparecendo, limpe o cache do LiteSpeed em hPanel → Avançado → Gerenciador de cache → Limpar tudo.
 
-## Remover o WordPress (ainda não feito)
-Não há como apagar arquivos soltos pela API da Hostinger, e a única operação de exclusão (`hosting_websites_delete`) apaga o site inteiro, com `abraccine`, `app` e `apps`. **Nunca use essa operação.** Apague pelo Gerenciador de Arquivos do hPanel.
+## Remover o WordPress e liberar inodes (pendente, manual)
+Objetivo: reduzir ao máximo os inodes. Decisões do dono: `/manifesto/` pode sair; a pasta `novo/` (outra instalação do WordPress) pode ser apagada.
 
-Antes: backup completo (arquivos e banco) e decidir o destino de `/manifesto/`.
-Pode sair da raiz: `wp-admin/`, `wp-includes/`, `wp-content/`, `wp-*.php`, `xmlrpc.php`, `license.txt`, `readme.html`, `index.php`, `robots.txt` e `llms.txt` (gerados pelo plugin de SEO, com sitemaps que deixam de existir), `mo.zip`, `.htaccess.bk` e o banco do WordPress. No `.htaccess`, remova os blocos LSCACHE, NON_LSCACHE e WordPress.
-Não mexer: `abraccine/`, `app/`, `apps/`, `assets/`, `index.html`. A pasta `novo/` é outra instalação do WordPress, que não é desta página.
+O que a API da Hostinger permite e não permite:
+- Não existe operação para apagar arquivos. A única que apaga arquivos de verdade, `hosting_websites_delete`, **apaga o site inteiro, com `abraccine`, `app` e `apps`. Nunca use.**
+- `wordpress_installations_delete` só desregistrou a instalação de `novo` (18/10/2026). Os arquivos continuaram no servidor. Por isso ela não libera inodes e **não foi usada na instalação da raiz** (também apagaria o banco, sem ganho de inodes).
+
+Apague pelo Gerenciador de Arquivos do hPanel (Websites → Gerenciador de arquivos → `public_html`), depois de um backup (arquivos e banco):
+- Pastas: `wp-admin/`, `wp-includes/`, `wp-content/`, `novo/`, `.tmb/`
+- Arquivos: `wp-*.php`, `xmlrpc.php`, `license.txt`, `readme.html`, `index.php`, `robots.txt`, `llms.txt`, `mo.zip`, `.htaccess.bk`, `.htaccess.pre-static`
+- `.htaccess`: deixe só `DirectoryIndex index.html`.
+- Banco de dados do WordPress (hPanel → Bancos de dados), por último.
+
+Não mexer: `abraccine/`, `app/`, `apps/`, `assets/`, `index.html`, `.htaccess`.
+Observação: `apps/solaris/` tem dezenas de versões antigas de `ncr-native.v1.*.js` e `tipografia.v1.*.js`, que são inodes que podem sair. Conferir antes qual versão a `index.html` usa.
