@@ -1,0 +1,295 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}</style>
+<title>Painel Uttopya</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Conceito: painel de mesa em paisagem (~800x360 CSS px). Linha de cima: agora + música.
+   Linha de baixo: cinco anéis (CPU, RAM, Disco, Inodes, Drive). Tudo em unidades --k
+   (1% da altura da tela) para escalar sem media queries. Sem blur, sem sombras grandes. */
+:root{
+  --bg:#0b0f14; --panel:#121922; --panel-2:#1a2531; --line:#233140;
+  --fg:#e8edf2; --muted:#8997a7; --bad:#ff6b6b;
+  --cpu:#2fd0a3; --ram:#f2b84b; --disk:#ff8a6b; --inode:#9b8cff; --drive:#4aa8ff;
+  --k:1vh;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg); color:var(--fg);
+  font:400 calc(var(--k)*3.8)/1.25 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-variant-numeric:tabular-nums;
+  overflow:hidden; -webkit-tap-highlight-color:transparent;
+}
+button{font:inherit;color:inherit}
+.panel{
+  height:100%; display:grid;
+  grid-template-columns:5fr 7fr; grid-template-rows:56fr 44fr;
+  gap:calc(var(--k)*2.2);
+  padding-block:calc(var(--k)*2.2);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.card{
+  min-width:0; min-height:0; position:relative;
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:calc(var(--k)*2.4); padding:calc(var(--k)*3);
+}
+
+/* Agora */
+.now{display:flex;flex-direction:column;justify-content:space-between}
+.clock{
+  all:unset; cursor:pointer; align-self:flex-start;
+  font-size:calc(var(--k)*20); font-weight:300; line-height:1; letter-spacing:-.03em;
+}
+.clock:focus-visible{outline:2px solid var(--drive);outline-offset:4px;border-radius:6px}
+.date{color:var(--muted);text-transform:capitalize;margin-top:calc(var(--k)*1)}
+.wx{display:flex;align-items:center;gap:calc(var(--k)*2.4)}
+.temp{font-size:calc(var(--k)*10);font-weight:300;line-height:1}
+.wxd{line-height:1.3}
+.wxd small{color:var(--muted);font-size:max(11px,calc(var(--k)*3.2))}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:max(10px,calc(var(--k)*2.8))}
+.hud{
+  position:absolute; right:calc(var(--k)*2.4); top:calc(var(--k)*2.4);
+  background:var(--panel-2); border:1px solid var(--line); border-radius:8px;
+  padding:4px 8px; font:500 max(10px,calc(var(--k)*2.8))/1.3 ui-monospace,Menlo,monospace;
+}
+
+/* Música */
+.music{display:flex;flex-direction:column;justify-content:space-between}
+.track{display:flex;gap:calc(var(--k)*3);align-items:center;min-width:0}
+.cover{
+  flex:none; width:calc(var(--k)*20); height:calc(var(--k)*20); border-radius:calc(var(--k)*1.8);
+  background:linear-gradient(135deg,#ff8a6b,#9b8cff 55%,#4aa8ff);
+}
+.tinfo{min-width:0}
+.tsrc{color:var(--muted);font-size:max(10px,calc(var(--k)*2.8));letter-spacing:.08em;text-transform:uppercase}
+.ttitle{font-size:calc(var(--k)*5.4);font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tartist{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{display:flex;align-items:center;gap:calc(var(--k)*2);color:var(--muted);font-size:max(10px,calc(var(--k)*2.8))}
+.rail{flex:1;height:4px;border-radius:2px;background:var(--panel-2);overflow:hidden}
+.fill{height:100%;width:100%;background:var(--fg);transform-origin:left center;transform:scaleX(0)}
+.ctl{display:flex;align-items:center;justify-content:space-between;gap:calc(var(--k)*2)}
+.btns{display:flex;align-items:center;gap:calc(var(--k)*2)}
+.btn{
+  all:unset; cursor:pointer; display:grid; place-items:center;
+  min-width:44px; min-height:44px; border-radius:50%;
+}
+.btn:active{background:var(--panel-2)}
+.btn:focus-visible{outline:2px solid var(--drive)}
+.btn svg{width:calc(var(--k)*5.5);height:calc(var(--k)*5.5);min-width:18px;min-height:18px;fill:currentColor}
+.btn.play{background:var(--fg);color:var(--bg)}
+.btn.play:active{background:var(--muted)}
+.vol{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:max(10px,calc(var(--k)*2.8))}
+.vol input{width:calc(var(--k)*26);accent-color:var(--fg)}
+
+/* Anéis */
+.rings{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,1fr);gap:calc(var(--k)*2.2);min-height:0}
+.ring{
+  min-width:0; min-height:0; display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--panel); border:1px solid var(--line); border-radius:calc(var(--k)*2.4);
+  padding:calc(var(--k)*1.6);
+}
+.ring svg{height:calc(var(--k)*17);width:auto;max-width:100%}
+.ring .trk{fill:none;stroke:var(--panel-2);stroke-width:6}
+.ring .val{
+  fill:none;stroke:var(--c);stroke-width:6;stroke-linecap:round;
+  transform:rotate(-90deg);transform-origin:32px 32px;
+  transition:stroke-dashoffset .6s ease,stroke .3s;
+}
+.ring.hot .val{stroke:var(--bad)}
+.ring text{fill:var(--fg);font:600 15px system-ui,sans-serif}
+.rn{font-weight:600;margin-top:calc(var(--k)*.8)}
+.rd{color:var(--muted);font-size:max(10px,calc(var(--k)*2.8));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+@media (orientation:portrait){
+  :root{--k:.62vw}
+  html,body{height:auto}
+  body{overflow-x:hidden;overflow-y:auto}
+  .panel{height:auto;grid-template-columns:1fr;grid-template-rows:none}
+  .now{gap:calc(var(--k)*4)}
+  .rings{grid-template-columns:repeat(2,1fr)}
+  .ring{padding-block:calc(var(--k)*3)}
+  .ring:last-child{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<main class="panel">
+  <section class="card now">
+    <div>
+      <button id="clock" class="clock" type="button" aria-label="Mostrar ou ocultar medidores de teste">--:--</button>
+      <div id="date" class="date"></div>
+    </div>
+    <div class="wx">
+      <span class="temp">26°</span>
+      <span class="wxd">Trovoada · São Paulo<br><small>↑31° ↓20° · sensação de 28°</small></span>
+    </div>
+    <div class="meta"><span>dados simulados</span><span id="stale">–</span></div>
+    <div id="hud" class="hud" hidden></div>
+  </section>
+
+  <section class="card music" aria-label="Música">
+    <div class="track">
+      <div class="cover" aria-hidden="true"></div>
+      <div class="tinfo">
+        <div class="tsrc">Spotify · exemplo</div>
+        <div id="ttitle" class="ttitle">–</div>
+        <div id="tartist" class="tartist">–</div>
+      </div>
+    </div>
+    <div class="bar"><span id="tpos">0:00</span><div class="rail"><div id="fill" class="fill"></div></div><span id="tdur">0:00</span></div>
+    <div class="ctl">
+      <div class="btns">
+        <button id="prev" class="btn" type="button" aria-label="Faixa anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+        <button id="play" class="btn play" type="button" aria-label="Pausar"><svg viewBox="0 0 24 24"><path id="playicon" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+        <button id="next" class="btn" type="button" aria-label="Próxima faixa"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z"/></svg></button>
+      </div>
+      <label class="vol">Volume <input id="vol" type="range" min="0" max="100" value="50"></label>
+    </div>
+  </section>
+
+  <section id="rings" class="rings" aria-label="Recursos do servidor e do Drive"></section>
+</main>
+
+<script>
+(function(){
+'use strict';
+/* Contrato do futuro GET /api/state (JSON). Este arquivo não contém nenhum token:
+   quando o backend existir, só fetchState() muda. */
+var REFRESH_MS = 5000;            /* no painel real: 30000 */
+var C = 2*Math.PI*26;
+var $ = function(s){ return document.querySelector(s); };
+var nf = new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1});
+
+var RINGS = [
+  {k:'cpu',    name:'CPU',    color:'var(--cpu)'},
+  {k:'ram',    name:'RAM',    color:'var(--ram)'},
+  {k:'disk',   name:'Disco',  color:'var(--disk)'},
+  {k:'inodes', name:'Inodes', color:'var(--inode)'},
+  {k:'drive',  name:'Drive',  color:'var(--drive)'}
+];
+$('#rings').innerHTML = RINGS.map(function(r){
+  return '<div class="ring" id="ring-'+r.k+'" style="--c:'+r.color+'">'+
+    '<svg viewBox="0 0 64 64" aria-hidden="true"><circle class="trk" cx="32" cy="32" r="26"/>'+
+    '<circle class="val" cx="32" cy="32" r="26" stroke-dasharray="'+C.toFixed(2)+'" stroke-dashoffset="'+C.toFixed(2)+'"/>'+
+    '<text x="32" y="33" text-anchor="middle" dominant-baseline="central">–</text></svg>'+
+    '<div class="rn">'+r.name+'</div><div class="rd">–</div></div>';
+}).join('');
+
+/* ---- dados simulados ---- */
+var sim = {cpu:23, ram:2.3, disk:33, inodes:1.7, drive:11.4};
+var TOTAL = {ram:4, disk:80, inodes:5.2, drive:15};
+function drift(v,min,max,step){ return Math.min(max,Math.max(min,v+(Math.random()-.5)*step)); }
+function fetchState(){
+  sim.cpu = drift(sim.cpu,4,96,22);
+  sim.ram = drift(sim.ram,1.2,3.8,.4);
+  sim.disk = drift(sim.disk,30,36,.3);
+  sim.inodes = drift(sim.inodes,1.5,2,.02);
+  sim.drive = drift(sim.drive,11,12,.02);
+  return Promise.resolve({
+    at: Date.now(),
+    tencent:{
+      cpuPct: sim.cpu,
+      ram:{used:sim.ram,total:TOTAL.ram},
+      disk:{used:sim.disk,total:TOTAL.disk},
+      inodes:{used:sim.inodes,total:TOTAL.inodes}
+    },
+    drive:{used:sim.drive,total:TOTAL.drive}
+  });
+}
+
+function setRing(k,pct,detail){
+  var el = $('#ring-'+k), p = Math.max(0,Math.min(100,pct));
+  el.querySelector('.val').style.strokeDashoffset = (C*(1-p/100)).toFixed(2);
+  el.classList.toggle('hot', p>=85);
+  el.querySelector('text').textContent = Math.round(p)+'%';
+  el.querySelector('.rd').textContent = detail;
+}
+function pct(o){ return o.used/o.total*100; }
+function render(s){
+  var t = s.tencent;
+  setRing('cpu', t.cpuPct, 'Tencent');
+  setRing('ram', pct(t.ram), nf.format(t.ram.used)+' / '+nf.format(t.ram.total)+' GB');
+  setRing('disk', pct(t.disk), nf.format(t.disk.used)+' / '+nf.format(t.disk.total)+' GB');
+  setRing('inodes', pct(t.inodes), nf.format(t.inodes.used)+' / '+nf.format(t.inodes.total)+' mi');
+  setRing('drive', pct(s.drive), nf.format(s.drive.used)+' / '+nf.format(s.drive.total)+' GB');
+  $('#stale').textContent = 'atualizado '+new Date(s.at).toLocaleTimeString('pt-BR');
+}
+function refresh(){
+  if(document.hidden) return;
+  fetchState().then(render).catch(function(){ $('#stale').textContent = 'sem conexão'; });
+}
+
+/* ---- relógio e música (simulada) ---- */
+var TRACKS = [
+  {t:'Faixa de exemplo',a:'Artista de exemplo',d:214},
+  {t:'Segunda faixa',a:'Outro artista',d:187},
+  {t:'Terceira faixa',a:'Artista três',d:243}
+];
+var ti = 0, pos = 62, playing = true, last = performance.now(), lastMin = -1;
+function fmt(s){ s = Math.floor(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function renderTrack(){
+  var tr = TRACKS[ti];
+  $('#ttitle').textContent = tr.t; $('#tartist').textContent = tr.a; $('#tdur').textContent = fmt(tr.d);
+}
+function renderPlay(){
+  $('#playicon').setAttribute('d', playing ? 'M7 5h4v14H7zM13 5h4v14h-4z' : 'M8 5v14l11-7z');
+  $('#play').setAttribute('aria-label', playing ? 'Pausar' : 'Tocar');
+}
+function tick(){
+  if(document.hidden) return;
+  var now = performance.now();
+  if(playing){
+    pos += (now-last)/1000;
+    if(pos >= TRACKS[ti].d){ ti = (ti+1)%TRACKS.length; pos = 0; renderTrack(); }
+  }
+  last = now;
+  $('#fill').style.transform = 'scaleX('+(pos/TRACKS[ti].d).toFixed(4)+')';
+  $('#tpos').textContent = fmt(pos);
+  var d = new Date(), m = d.getMinutes();
+  if(m !== lastMin){
+    lastMin = m;
+    $('#clock').textContent = String(d.getHours()).padStart(2,'0')+':'+String(m).padStart(2,'0');
+    $('#date').textContent = d.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
+  }
+}
+$('#play').addEventListener('click',function(){ playing = !playing; last = performance.now(); renderPlay(); });
+$('#next').addEventListener('click',function(){ ti = (ti+1)%TRACKS.length; pos = 0; renderTrack(); });
+$('#prev').addEventListener('click',function(){ ti = (ti+TRACKS.length-1)%TRACKS.length; pos = 0; renderTrack(); });
+
+/* ---- medidores de teste (toque no relógio) ---- */
+var hud = $('#hud'), hudOn = false, raf = 0, frames = 0, t0 = 0;
+function loop(t){
+  frames++;
+  if(t-t0 >= 1000){
+    var mem = performance.memory ? Math.round(performance.memory.usedJSHeapSize/1048576)+' MB heap' : 'heap n/d';
+    hud.textContent = Math.round(frames*1000/(t-t0))+' fps · '+mem+' · '+document.getElementsByTagName('*').length+' nós';
+    frames = 0; t0 = t;
+  }
+  raf = requestAnimationFrame(loop);
+}
+$('#clock').addEventListener('click',function(){
+  hudOn = !hudOn; hud.hidden = !hudOn;
+  if(hudOn){ frames = 0; t0 = performance.now(); raf = requestAnimationFrame(loop); }
+  else cancelAnimationFrame(raf);
+});
+
+/* ---- tela sempre acesa (se o navegador permitir) ---- */
+var wl = null;
+function keepAwake(){
+  try{
+    if('wakeLock' in navigator && !document.hidden){
+      navigator.wakeLock.request('screen').then(function(l){ wl = l; l.addEventListener('release',function(){ wl = null; }); }).catch(function(){});
+    }
+  }catch(e){}
+}
+document.addEventListener('visibilitychange',function(){
+  if(!document.hidden){ last = performance.now(); keepAwake(); refresh(); tick(); }
+});
+addEventListener('pointerdown',keepAwake,{once:true});
+
+renderTrack(); renderPlay(); keepAwake(); refresh(); tick();
+setInterval(refresh, REFRESH_MS);
+setInterval(tick, 1000);
+})();
+</script>
