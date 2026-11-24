@@ -27,7 +27,7 @@ body{
 button{font:inherit;color:inherit}
 .panel{
   height:100%; display:grid;
-  grid-template-columns:7fr 5fr; grid-template-rows:56fr 44fr;
+  grid-template-columns:8fr 4fr; grid-template-rows:64fr 36fr;
   gap:calc(var(--k)*2);
   padding-block:calc(var(--k)*2);
   padding-left:max(16px,env(safe-area-inset-left,0px));
@@ -46,7 +46,7 @@ button{font:inherit;color:inherit}
 /* Hora e clima, no padrão do Uttopya TV */
 .now{
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
-  gap:calc(var(--k)*2); padding-top:calc(var(--k)*9);
+  gap:calc(var(--k)*2.6); padding-top:calc(var(--k)*4);
   background:radial-gradient(120% 95% at 0% 0%,rgba(248,102,29,.30),transparent 62%),var(--card);
 }
 .logo{
@@ -64,20 +64,21 @@ button{font:inherit;color:inherit}
 .date{font-size:calc(var(--k)*4.6);font-weight:600;letter-spacing:-.01em}
 .clock{
   all:unset; cursor:pointer; display:block;
-  font-size:calc(var(--k)*16); font-weight:300; line-height:1; letter-spacing:-.02em;
+  font-size:calc(var(--k)*27); font-weight:300; line-height:1; letter-spacing:-.02em;
 }
 .clock:focus-visible{outline:2px solid var(--accent-hi);outline-offset:4px;border-radius:6px}
 .wx{
-  display:inline-flex; align-items:center; gap:calc(var(--k)*2);
-  max-width:100%; padding:calc(var(--k)*1.5) calc(var(--k)*3);
-  border-radius:999px; background:rgba(244,242,236,.08); border:1px solid var(--line);
-  text-align:left; font-size:max(10.5px,calc(var(--k)*2.9)); line-height:1.25;
+  display:inline-flex; align-items:center; gap:calc(var(--k)*2.6);
+  max-width:100%; padding:calc(var(--k)*2.2) calc(var(--k)*4.2);
+  border-radius:999px; background:rgba(244,242,236,.10); border:1px solid rgba(244,242,236,.12);
+  text-align:left; font-size:max(11px,calc(var(--k)*3.5)); line-height:1.3;
 }
-.wxi{width:calc(var(--k)*5.4);height:calc(var(--k)*5.4);min-width:16px;min-height:16px;fill:currentColor;flex:none}
-.wxt{font-size:calc(var(--k)*7.4);font-weight:300;line-height:1;letter-spacing:-.03em}
+.wxi{width:calc(var(--k)*7.4);height:calc(var(--k)*7.4);min-width:18px;min-height:18px;fill:currentColor;flex:none}
+.wxt{font-size:calc(var(--k)*9.4);font-weight:300;line-height:1;letter-spacing:-.03em}
 .wxg{display:flex;flex-direction:column;white-space:nowrap}
 .wxg b{font-weight:600}
 .wxg span{display:flex;gap:.6em;opacity:.85}
+.wxg i{font-style:normal}
 .sep{width:1px;align-self:stretch;background:rgba(244,242,236,.22);flex:none}
 .hud{
   position:absolute; right:calc(var(--k)*2.8); top:calc(var(--k)*9);
@@ -94,7 +95,7 @@ button{font:inherit;color:inherit}
 }
 .track{display:flex;gap:calc(var(--k)*2.6);align-items:center;min-width:0}
 .cover{
-  flex:none; width:calc(var(--k)*15); height:calc(var(--k)*15); border-radius:calc(var(--k)*2);
+  flex:none; width:calc(var(--k)*17); height:calc(var(--k)*17); border-radius:calc(var(--k)*2.2);
   background:linear-gradient(145deg,var(--accent-hi),var(--accent) 55%,#6b2a10);
 }
 .tinfo{min-width:0}
@@ -103,7 +104,7 @@ button{font:inherit;color:inherit}
 .bar{display:flex;align-items:center;gap:calc(var(--k)*1.8);color:var(--muted);font-size:max(10px,calc(var(--k)*2.7))}
 .rail{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden}
 .fill{height:100%;width:100%;background:linear-gradient(90deg,var(--accent-hi),var(--accent));transform-origin:left center;transform:scaleX(0)}
-.ctl{display:flex;align-items:center;justify-content:space-between;gap:calc(var(--k)*1.6)}
+.ctl{display:flex;align-items:center;justify-content:center;gap:calc(var(--k)*1.6)}
 .btns{display:flex;align-items:center;gap:calc(var(--k)*.8)}
 .btn{all:unset;cursor:pointer;display:grid;place-items:center;min-width:44px;min-height:44px;border-radius:50%;color:var(--muted)}
 .btn:active{background:rgba(255,255,255,.08)}
@@ -111,8 +112,6 @@ button{font:inherit;color:inherit}
 .btn svg{width:calc(var(--k)*5);height:calc(var(--k)*5);min-width:18px;min-height:18px;fill:currentColor}
 .btn.play{background:var(--accent);color:var(--on-accent)}
 .btn.play:active{background:var(--accent-hi)}
-.vol{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:max(10px,calc(var(--k)*2.7));min-width:0}
-.vol input{width:calc(var(--k)*17);min-width:50px;accent-color:var(--accent-hi)}
 
 /* Anéis */
 .rings{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,1fr);gap:calc(var(--k)*2);min-height:0}
@@ -193,9 +192,7 @@ button{font:inherit;color:inherit}
         <button id="prev" class="btn" type="button" aria-label="Faixa anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
         <button id="play" class="btn play" type="button" aria-label="Pausar"><svg viewBox="0 0 24 24"><path id="playicon" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
         <button id="next" class="btn" type="button" aria-label="Próxima faixa"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z"/></svg></button>
-      </div>
-      <label class="vol">Vol. <input id="vol" type="range" min="0" max="100" value="50"></label>
-    </div>
+      </div>    </div>
   </section>
 
   <section id="rings" class="rings" aria-label="Recursos do servidor e do Drive"></section>
@@ -286,7 +283,7 @@ function render(s){
   setRing('disk', pct(t.disk), nf.format(t.disk.used)+' / '+nf.format(t.disk.total)+' GB');
   setRing('inodes', pct(t.inodes), nf.format(t.inodes.used)+' / '+nf.format(t.inodes.total)+' mi');
   setRing('drive', pct(s.drive), nf.format(s.drive.used)+' / '+nf.format(s.drive.total)+' GB');
-  $('#stale').textContent = 'simulado · '+new Date(s.at).toLocaleTimeString('pt-BR');
+  $('#stale').textContent = 'teste · '+new Date(s.at).toLocaleTimeString('pt-BR');
 }
 function refresh(){
   if(document.hidden) return;
