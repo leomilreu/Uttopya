@@ -3,35 +3,40 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Roboto:wght@700&display=swap">
 <style>
-/* Conceito: painel de mesa Uttopya One, em paisagem (~800x360 CSS px).
-   Linha de cima: card de hora e clima no padrão do Uttopya TV (data, relógio, pílula de clima)
-   + música compacta. Linha de baixo: cinco anéis.
-   Identidade do One: laranja #f8661d (favicon) e verde-grafite #1c2722 (cor de texto do One).
-   Logotipo: "uttopya" em minúsculas, Roboto 700. Tudo em unidades --k (1% da altura da tela). */
+/* Conceito: painel de mesa Uttopya One. Um "palco" com a proporção do celular deitado (20:9)
+   escala tudo junto (--k = 1% da altura do palco), então o layout é igual no Redmi e no monitor.
+   Card de hora e clima no padrão do Uttopya TV; música compacta; cinco anéis embaixo.
+   Fontes: Inter em todo o texto; Roboto 700 só no logotipo. Cores: laranja #f8661d e grafite #1c2722. */
 :root{
   --bg:#0f1512; --card:#1c2722; --card-2:#26332c; --line:rgba(250,249,246,.08);
   --ink:#f4f2ec; --muted:#93a097;
   --accent:#f8661d; --accent-hi:#ffa066; --on-accent:#1c2722;
   --good:#3ddc97; --warn:#ffd23f; --bad:#ff4d6a;
-  --k:1vh;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 body{
   background:var(--bg); color:var(--ink);
-  font:400 calc(var(--k)*3.8)/1.25 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-variant-numeric:tabular-nums; -webkit-font-smoothing:antialiased;
-  overflow:hidden; -webkit-tap-highlight-color:transparent;
+  display:grid; place-items:center; overflow:hidden;
+  -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
 }
 button{font:inherit;color:inherit}
+.stage{
+  container-type:size;
+  width:min(100vw,calc(100vh*2.2222),1000px);
+  aspect-ratio:20/9;
+}
 .panel{
+  --k:1cqh;
   height:100%; display:grid;
   grid-template-columns:8fr 4fr; grid-template-rows:64fr 36fr;
   gap:calc(var(--k)*2);
   padding-block:calc(var(--k)*2);
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px));
+  font:400 calc(var(--k)*3.8)/1.25 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-variant-numeric:tabular-nums;
 }
 .card{
   min-width:0; min-height:0; position:relative; overflow:hidden;
@@ -39,14 +44,14 @@ button{font:inherit;color:inherit}
   border-radius:calc(var(--k)*3.2); padding:calc(var(--k)*2.8);
 }
 .eyebrow{
-  font-size:max(10px,calc(var(--k)*2.7)); font-weight:600;
-  letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
+  font-size:max(10px,calc(var(--k)*2.7)); font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
 }
 
 /* Hora e clima, no padrão do Uttopya TV */
 .now{
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
-  gap:calc(var(--k)*2.6); padding-top:calc(var(--k)*4);
+  gap:calc(var(--k)*2.8); padding-top:calc(var(--k)*4);
   background:radial-gradient(120% 95% at 0% 0%,rgba(248,102,29,.30),transparent 62%),var(--card);
 }
 .logo{
@@ -58,25 +63,25 @@ button{font:inherit;color:inherit}
   position:absolute; right:calc(var(--k)*2.8); top:calc(var(--k)*2.6);
   display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
   padding:3px 9px;border-radius:99px;background:rgba(255,255,255,.06);
-  color:var(--muted);font-size:max(10px,calc(var(--k)*2.6));
+  color:var(--muted);font-size:max(10px,calc(var(--k)*2.5));
 }
 .dot{width:6px;height:6px;border-radius:50%;background:var(--good);display:block;flex:none}
-.date{font-size:calc(var(--k)*4.6);font-weight:600;letter-spacing:-.01em}
+.date{font-size:calc(var(--k)*3.9);font-weight:500;letter-spacing:.005em}
 .clock{
   all:unset; cursor:pointer; display:block;
-  font-size:calc(var(--k)*27); font-weight:300; line-height:1; letter-spacing:-.02em;
+  font-size:calc(var(--k)*21); font-weight:300; line-height:1; letter-spacing:-.01em;
 }
 .clock:focus-visible{outline:2px solid var(--accent-hi);outline-offset:4px;border-radius:6px}
 .wx{
-  display:inline-flex; align-items:center; gap:calc(var(--k)*2.6);
-  max-width:100%; padding:calc(var(--k)*2.2) calc(var(--k)*4.2);
+  display:inline-flex; align-items:center; gap:calc(var(--k)*2.4);
+  max-width:100%; padding:calc(var(--k)*1.8) calc(var(--k)*3.8);
   border-radius:999px; background:rgba(244,242,236,.10); border:1px solid rgba(244,242,236,.12);
-  text-align:left; font-size:max(11px,calc(var(--k)*3.5)); line-height:1.3;
+  text-align:left; font-size:max(11px,calc(var(--k)*3.2)); line-height:1.3;
 }
-.wxi{width:calc(var(--k)*7.4);height:calc(var(--k)*7.4);min-width:18px;min-height:18px;fill:currentColor;flex:none}
-.wxt{font-size:calc(var(--k)*9.4);font-weight:300;line-height:1;letter-spacing:-.03em}
+.wxi{width:calc(var(--k)*6);height:calc(var(--k)*6);min-width:18px;min-height:18px;fill:currentColor;flex:none}
+.wxt{font-size:calc(var(--k)*7.4);font-weight:300;line-height:1;letter-spacing:-.02em}
 .wxg{display:flex;flex-direction:column;white-space:nowrap}
-.wxg b{font-weight:600}
+.wxg b{font-weight:500}
 .wxg span{display:flex;gap:.6em;opacity:.85}
 .wxg i{font-style:normal}
 .sep{width:1px;align-self:stretch;background:rgba(244,242,236,.22);flex:none}
@@ -84,24 +89,24 @@ button{font:inherit;color:inherit}
   position:absolute; right:calc(var(--k)*2.8); top:calc(var(--k)*9);
   background:var(--card-2); border:1px solid var(--line); border-radius:8px;
   padding:3px 8px; white-space:pre; text-align:right;
-  font:500 max(10px,calc(var(--k)*2.7))/1.3 ui-monospace,Menlo,monospace; color:var(--accent-hi);
+  font:500 max(10px,calc(var(--k)*2.6))/1.3 ui-monospace,Menlo,monospace; color:var(--accent-hi);
 }
 
 /* Música (compacta) */
 .music{
-  display:flex;flex-direction:column;justify-content:space-between;
+  display:flex;flex-direction:column;justify-content:center;gap:calc(var(--k)*3.4);
   padding:calc(var(--k)*2.6);
   background:radial-gradient(100% 120% at 100% 0%,rgba(255,160,102,.14),transparent 58%),var(--card);
 }
 .track{display:flex;gap:calc(var(--k)*2.6);align-items:center;min-width:0}
 .cover{
-  flex:none; width:calc(var(--k)*17); height:calc(var(--k)*17); border-radius:calc(var(--k)*2.2);
+  flex:none; width:calc(var(--k)*16); height:calc(var(--k)*16); border-radius:calc(var(--k)*2.2);
   background:linear-gradient(145deg,var(--accent-hi),var(--accent) 55%,#6b2a10);
 }
 .tinfo{min-width:0}
-.ttitle{font-size:calc(var(--k)*4.8);font-weight:600;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:calc(var(--k)*.4)}
-.tartist{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:max(11px,calc(var(--k)*3.3))}
-.bar{display:flex;align-items:center;gap:calc(var(--k)*1.8);color:var(--muted);font-size:max(10px,calc(var(--k)*2.7))}
+.ttitle{font-size:calc(var(--k)*4.6);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:calc(var(--k)*.4)}
+.tartist{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:max(11px,calc(var(--k)*3.2))}
+.bar{display:flex;align-items:center;gap:calc(var(--k)*1.8);color:var(--muted);font-size:max(10px,calc(var(--k)*2.6))}
 .rail{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden}
 .fill{height:100%;width:100%;background:linear-gradient(90deg,var(--accent-hi),var(--accent));transform-origin:left center;transform:scaleX(0)}
 .ctl{display:flex;align-items:center;justify-content:center;gap:calc(var(--k)*1.6)}
@@ -136,14 +141,13 @@ button{font:inherit;color:inherit}
 .rd{color:var(--muted);font-size:max(10px,calc(var(--k)*2.8));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 
 @media (orientation:portrait){
-  :root{--k:.62vw}
   html,body{height:auto}
-  body{overflow-x:hidden;overflow-y:auto}
-  .panel{height:auto;grid-template-columns:1fr;grid-template-rows:none}
+  body{display:block;overflow-x:hidden;overflow-y:auto}
+  .stage{width:100%;aspect-ratio:auto;container-type:inline-size}
+  .panel{--k:.62cqw;height:auto;grid-template-columns:1fr;grid-template-rows:none}
   .now{padding-top:calc(var(--k)*16);gap:calc(var(--k)*3)}
   .wx{flex-wrap:wrap;justify-content:center;border-radius:calc(var(--k)*6);row-gap:calc(var(--k)*2)}
   .sep{display:none}
-  .music{gap:calc(var(--k)*3)}
   .rings{grid-template-columns:repeat(2,1fr)}
   .ring{gap:calc(var(--k)*2);padding-block:calc(var(--k)*3)}
   .ring:last-child{grid-column:1/-1}
@@ -159,6 +163,7 @@ button{font:inherit;color:inherit}
   </defs>
 </svg>
 
+<div class="stage">
 <main class="panel">
   <section class="card now">
     <span class="logo" role="img" aria-label="Uttopya">uttopya</span>
@@ -192,11 +197,13 @@ button{font:inherit;color:inherit}
         <button id="prev" class="btn" type="button" aria-label="Faixa anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
         <button id="play" class="btn play" type="button" aria-label="Pausar"><svg viewBox="0 0 24 24"><path id="playicon" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
         <button id="next" class="btn" type="button" aria-label="Próxima faixa"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z"/></svg></button>
-      </div>    </div>
+      </div>
+    </div>
   </section>
 
   <section id="rings" class="rings" aria-label="Recursos do servidor e do Drive"></section>
 </main>
+</div>
 
 <script>
 (function(){
