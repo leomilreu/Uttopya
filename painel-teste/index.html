@@ -1,14 +1,16 @@
 <!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}</style>
 <title>Painel Uttopya</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Roboto:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200..700&family=Roboto:wght@700&display=swap">
 <style>
 /* Conceito: painel de mesa Uttopya One. Um "palco" com a proporção do celular deitado (20:9)
    escala tudo junto (--k = 1% da altura do palco), então o layout é igual no Redmi e no monitor.
    Card de hora e clima no padrão do Uttopya TV; música compacta; cinco anéis embaixo.
-   Fontes: Inter em todo o texto; Roboto 700 só no logotipo. Cores: laranja #f8661d e grafite #1c2722. */
+   Fontes: San Francisco quando o aparelho for Apple (-apple-system), Inter como alternativa no Android;
+   Roboto 700 só no logotipo. Visual de referência Apple: cards translúcidos sem blur, cantos grandes,
+   relógio ultrafino, anéis grossos no estilo Atividade. Cores: laranja #f8661d e grafite #1c2722. */
 :root{
-  --bg:#0f1512; --card:#1c2722; --card-2:#26332c; --line:rgba(250,249,246,.08);
+  --bg:#0f1512; --card:rgba(244,242,236,.06); --card-2:#26332c; --line:rgba(250,249,246,.09);
   --ink:#f4f2ec; --muted:#93a097;
   --accent:#f8661d; --accent-hi:#ffa066; --on-accent:#1c2722;
   --good:#3ddc97; --warn:#ffd23f; --bad:#ff4d6a;
@@ -17,7 +19,8 @@
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 body{
-  background:var(--bg); color:var(--ink);
+  background:radial-gradient(75% 95% at 14% 0%,rgba(248,102,29,.20),transparent 62%),radial-gradient(60% 80% at 100% 100%,rgba(255,160,102,.08),transparent 60%),var(--bg);
+  color:var(--ink);
   display:grid; place-items:center; overflow:hidden;
   -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
 }
@@ -35,17 +38,16 @@ button{font:inherit;color:inherit}
   padding-block:calc(var(--k)*2);
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px));
-  font:400 calc(var(--k)*3.8)/1.25 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font:400 calc(var(--k)*3.8)/1.25 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,"Segoe UI",Roboto,sans-serif;
   font-variant-numeric:tabular-nums;
 }
 .card{
   min-width:0; min-height:0; position:relative; overflow:hidden;
-  background:var(--card); border:1px solid var(--line);
-  border-radius:calc(var(--k)*3.2); padding:calc(var(--k)*2.8);
+  background:var(--card); border:1px solid var(--line); box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+  border-radius:calc(var(--k)*4.2); padding:calc(var(--k)*2.8);
 }
 .eyebrow{
-  font-size:max(10px,calc(var(--k)*2.7)); font-weight:500;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
+  font-size:max(11px,calc(var(--k)*3)); font-weight:600; color:var(--muted);
 }
 
 /* Hora e clima, no padrão do Uttopya TV */
@@ -69,7 +71,7 @@ button{font:inherit;color:inherit}
 .date{font-size:calc(var(--k)*3.9);font-weight:500;letter-spacing:.005em}
 .clock{
   all:unset; cursor:pointer; display:block;
-  font-size:calc(var(--k)*21); font-weight:300; line-height:1; letter-spacing:-.01em;
+  font-size:calc(var(--k)*21); font-weight:200; line-height:1; letter-spacing:-.025em;
 }
 .clock:focus-visible{outline:2px solid var(--accent-hi);outline-offset:4px;border-radius:6px}
 .wx{
@@ -122,22 +124,24 @@ button{font:inherit;color:inherit}
 .rings{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,1fr);gap:calc(var(--k)*2);min-height:0}
 .ring{
   min-width:0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  background:var(--card);border:1px solid var(--line);border-radius:calc(var(--k)*3.2);
+  background:var(--card);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.07);border-radius:calc(var(--k)*4.2);
   padding:calc(var(--k)*2) calc(var(--k)*1.6);
 }
 .rh{display:flex;align-items:center;justify-content:space-between;width:100%;gap:6px}
 .ring.warn .dot{background:var(--warn)}
 .ring.hot .dot{background:var(--bad)}
 .ring svg{height:calc(var(--k)*16);width:auto;max-width:100%}
-.ring .trk{fill:none;stroke:rgba(255,255,255,.07);stroke-width:5.5}
+.ring .trk{fill:none;stroke:rgba(248,102,29,.2);stroke-width:7}
+.ring.warn .trk{stroke:rgba(255,210,63,.2)}
+.ring.hot .trk{stroke:rgba(255,77,106,.2)}
 .ring .val{
-  fill:none;stroke:url(#g);stroke-width:5.5;stroke-linecap:round;
+  fill:none;stroke:url(#g);stroke-width:7;stroke-linecap:round;
   transform:rotate(-90deg);transform-origin:32px 32px;
   transition:stroke-dashoffset .6s ease;
 }
 .ring.warn .val{stroke:var(--warn)}
 .ring.hot .val{stroke:var(--bad)}
-.ring text{fill:var(--ink);font:600 16px Inter,system-ui,sans-serif;letter-spacing:-.02em}
+.ring text{fill:var(--ink);font:600 15px -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;letter-spacing:-.02em}
 .rd{color:var(--muted);font-size:max(10px,calc(var(--k)*2.8));white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 
 @media (orientation:portrait){
