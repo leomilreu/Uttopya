@@ -1,10 +1,10 @@
 <!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}</style>
 <title>Painel Uttopya</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Roboto:wght@700&display=swap">
 <style>
 /* Conceito: painel de mesa Uttopya One, em paisagem (~800x360 CSS px).
-   Linha de cima: relógio (com a marca) + música. Linha de baixo: cinco anéis.
+   Linha de cima: relógio (com o logotipo uttopya) + música. Linha de baixo: cinco anéis.
    Identidade do One: laranja #f8661d (favicon) e verde-grafite #1c2722 (cor de texto do One).
    Tudo em unidades --k (1% da altura da tela). Sem blur, sem sombras grandes. */
 :root{
@@ -42,12 +42,11 @@ button{font:inherit;color:inherit}
   letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
 }
 
-/* Marca: círculo sólido laranja (o favicon do One) + nome em texto. O logotipo oficial é imagem e não foi redesenhado. */
-.mark{
-  display:inline-flex; align-items:center; gap:calc(var(--k)*1.8);
-  font-size:calc(var(--k)*4.8); font-weight:650; letter-spacing:-.025em; line-height:1; white-space:nowrap;
+/* Logotipo Uttopya: "uttopya" em minúsculas, Roboto 700 (espaçamento do brand.css). */
+.logo{
+  font:700 calc(var(--k)*6.2)/1 Roboto,Arial,sans-serif;
+  letter-spacing:-.042857em; white-space:nowrap; color:var(--ink);
 }
-.logo-dot{width:.8em;height:.8em;border-radius:50%;background:var(--accent);display:block;flex:none}
 
 /* Agora */
 .now{
@@ -152,7 +151,7 @@ button{font:inherit;color:inherit}
 <main class="panel">
   <section class="card now">
     <div class="hd">
-      <span class="mark"><i class="logo-dot"></i>Uttopya One</span>
+      <span class="logo" role="img" aria-label="Uttopya">uttopya</span>
       <span class="chip"><i class="dot"></i><span id="stale">–</span></span>
     </div>
     <div>
